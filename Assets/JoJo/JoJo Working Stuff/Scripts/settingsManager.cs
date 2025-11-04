@@ -11,7 +11,17 @@ public class settingsManager : MonoBehaviour
     public void SetMasterVolume(float volume)
     {
         // Assuming your mixer has a parameter named "MasterVolume"
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+        audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        // Assuming your mixer has a parameter named "MasterVolume"
+        audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
+    }
+    public void SetSFXVolume(float volume)
+    {
+        // Assuming your mixer has a parameter named "MasterVolume"
+        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
     }
 
     // --- GRAPHICS QUALITY ---
