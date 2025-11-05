@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class basicMove : MonoBehaviour
 {
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float lookSensitivity = 5f;
+    public Transform playerCamera;
     private float xRotation = 0f;
     private float yRotation = 0f;
-    private float moveSpeed = 5f;
-    private float lookSensitivity = 5f;
-    public Transform playerCamera;
+    public bool dia = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,10 +17,17 @@ public class basicMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        MovePlayer();
-        LookAround();
+        if (!dia)
+        {
+            MovePlayer();
+            LookAround();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 
     void MovePlayer()
