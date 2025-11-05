@@ -10,18 +10,36 @@ public class settingsManager : MonoBehaviour
     // --- AUDIO ---
     public void SetMasterVolume(float volume)
     {
-        // Assuming your mixer has a parameter named "MasterVolume"
-        audioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+        float minDB = -40f; // don’t go lower than -40, keeps it audible
+        float dB = Mathf.Lerp(minDB, 0f, volume);
+
+        // Optional: mute if slider is fully down
+        if (volume <= 0.001f)
+            dB = -80f;
+
+        audioMixer.SetFloat("Master", dB);
     }
     public void SetMusicVolume(float volume)
     {
-        // Assuming your mixer has a parameter named "MasterVolume"
-        audioMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
+        float minDB = -40f; // don’t go lower than -40, keeps it audible
+        float dB = Mathf.Lerp(minDB, 0f, volume);
+
+        // Optional: mute if slider is fully down
+        if (volume <= 0.001f)
+            dB = -80f;
+
+        audioMixer.SetFloat("Music", dB);
     }
     public void SetSFXVolume(float volume)
     {
-        // Assuming your mixer has a parameter named "MasterVolume"
-        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        float minDB = -40f; // don’t go lower than -40, keeps it audible
+        float dB = Mathf.Lerp(minDB, 0f, volume);
+
+        // Optional: mute if slider is fully down
+        if (volume <= 0.001f)
+            dB = -80f;
+
+        audioMixer.SetFloat("SFX", dB);
     }
 
     // --- GRAPHICS QUALITY ---
