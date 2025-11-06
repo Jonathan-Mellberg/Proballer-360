@@ -7,6 +7,7 @@ public class pick_Upp : MonoBehaviour
     [SerializeField] private string interacteableTag = "Interacteable";
     [SerializeField] private string pickuppableTag = "PickUppable";
     [SerializeField] private GameObject holdPoint;
+    [SerializeField] private Rigidbody rigidbody;
 
     private GameObject cam;
     private GameObject obj;
@@ -40,11 +41,19 @@ public class pick_Upp : MonoBehaviour
             {
                 obj.transform.position = holdPoint.transform.position;
                 obj.transform.SetParent(holdPoint.transform);
+                if (obj.TryGetComponent<Rigidbody>(out rigidbody))
+                {
+                    rigidbody.isKinematic = true;
+                }
                 holdingObj = true;
             }
             if (Input.GetButtonDown("DropHeld") && holdingObj)
             {
                 obj.transform.SetParent(null);
+                if (rigidbody.isKinematic)
+                {
+                    rigidbody.isKinematic = false;
+                }
                 holdingObj = false;
             }
             if (Input.GetButtonDown("Interact") && canInteract && !obj.IsUnityNull())
