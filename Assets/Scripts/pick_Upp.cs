@@ -7,10 +7,12 @@ public class pick_Upp : MonoBehaviour
     [SerializeField] private string interacteableTag = "Interacteable";
     [SerializeField] private string pickuppableTag = "PickUppable";
     [SerializeField] private GameObject holdPoint;
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private Rigidbody rig;
 
     private GameObject cam;
     private GameObject obj;
+    private BillboardRenderer bill;
+    private GameObject billObject;
     private bool canInteract = false;
     private bool canPickUpp = false;
     private bool holdingObj = false;
@@ -34,6 +36,18 @@ public class pick_Upp : MonoBehaviour
             }
             else if (obj.CompareTag(pickuppableTag))
             {
+                bill = obj.GetComponentInChildren<BillboardRenderer>();
+
+                if (bill != null)
+                {
+                    bill.gameObject.SetActive(true);
+                    billObject = bill.gameObject;
+                }
+                if (bill == null && billObject != null)
+                {
+                    bill.gameObject.SetActive(false);
+                    billObject = null;
+                }
                 canPickUpp = obj.CompareTag(pickuppableTag);
             }
 
@@ -41,18 +55,18 @@ public class pick_Upp : MonoBehaviour
             {
                 obj.transform.position = holdPoint.transform.position;
                 obj.transform.SetParent(holdPoint.transform);
-                if (obj.TryGetComponent<Rigidbody>(out rigidbody))
+                if (obj.TryGetComponent<Rigidbody>(out rig))
                 {
-                    rigidbody.isKinematic = true;
+                    rig.isKinematic = true;
                 }
                 holdingObj = true;
             }
             if (Input.GetButtonDown("DropHeld") && holdingObj)
             {
                 obj.transform.SetParent(null);
-                if (rigidbody.isKinematic)
+                if (rig.isKinematic)
                 {
-                    rigidbody.isKinematic = false;
+                    rig.isKinematic = false;
                 }
                 holdingObj = false;
             }
