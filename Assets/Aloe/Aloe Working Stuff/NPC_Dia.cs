@@ -6,10 +6,10 @@ public class NPC_Dia : Interaction
 {
     public GameObject template;
     public GameObject canvas;
-    public GameObject player;
+    public basicMove player;
     public TextMeshPro text;
-    public TextMeshPro name;
-    float timer;
+    public TextMeshPro charName;
+    //float timer;
 
     /*
     void Dialog(string text, string name)
@@ -27,9 +27,10 @@ public class NPC_Dia : Interaction
     
      public System.Collections.IEnumerator Dialog(List<string>charList, int charID, string dialog,List<string> diaList, int timePerLetter )
     {
+        player.dia = true;
         int l = 0;
         int o = 1;
-        name.text = charList[charID];
+        charName.text = charList[charID];
         for (int i = 0; i < diaList[o].Length; i++)
         {
             
