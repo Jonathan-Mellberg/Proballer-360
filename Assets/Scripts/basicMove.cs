@@ -7,7 +7,7 @@ public class basicMove : MonoBehaviour
     public Transform playerCamera;
     private float xRotation = 0f;
     private float yRotation = 0f;
-    public bool dia = false;
+    public bool freeze = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
