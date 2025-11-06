@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 625899325}
   - component: {fileID: 625899324}
   - component: {fileID: 625899329}
+  - component: {fileID: 625899330}
   m_Layer: 0
   m_Name: Playah
   m_TagString: Untagged
@@ -345,6 +346,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interact
   interactRadius: 10
   interacteableTag: Interacteable
+--- !u!54 &625899330
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625899323}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &685285599
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ca4941508c1404fad75fbf5069b288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
+  angry: 0
+  happy: 0
   orders: []
   sprites:
   - {fileID: 0}
@@ -767,9 +797,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c88a8295fe9b0846a75bcc5615e35e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerListV2
-  customerIndex: 0
   charachters: []
   customers: []
+  customerCount: 0
+  customerIndex: 0
+  customerSpawn: {fileID: 0}
+  queuePositions: []
+  customerSpawnTime: 30
+  spawnTimeVariation: 5
+  customerLimit: 5
 --- !u!4 &983194956
 Transform:
   m_ObjectHideFlags: 0
