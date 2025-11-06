@@ -1,0 +1,64 @@
+using UnityEngine;
+
+public class Customer : MonoBehaviour
+{
+    // button to complete order
+    // randomize score
+    // on complete order, kill current customer and move onward to next customer
+    // next customer lerps forward to point
+    // at end of day, get final score, debug log list of customer
+
+    // pool of orders
+    [HideInInspector] public bool angry;
+    [HideInInspector] public bool happy;
+
+    [SerializeField] private string[] orders;
+    [SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
+
+    private ScoreV2 score;
+    private CustomerListV2 customerList;
+    private BillboardRenderer bill;
+
+    private void Awake()
+    {
+        customerList = CustomerListV2.instance;
+        score = customerList.gameObject.GetComponent<ScoreV2>();
+
+        bill = gameObject.GetComponent<BillboardRenderer>();
+        bill.billboard = sprites[0];
+    }
+
+    private void GenerateOrder()
+    {
+        // generate order
+    }
+
+    public void CompleteOrder()
+    {
+        int customerScore = score.ratings[customerList.customerIndex].score;
+        if (customerScore <= score.killThreshold) Kill();
+        if (customerScore <= score.angryThreshold) angry = true;
+        if (customerScore <= score.happyThreshold) happy = true;
+
+        customerList.customerIndex++;
+        Leave();
+    }
+
+    private void Leave()
+    {
+        Destroy(gameObject);
+    }
+
+    private void Kill()
+    {
+
+    }
+
+    // give order, take order
+
+    // says order in speech scripts
+
+    // function to generate an order
+
+    // send order to platter script
+}
