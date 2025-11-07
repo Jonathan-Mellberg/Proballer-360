@@ -27,7 +27,7 @@ public class NPC_Dia : Interaction
     
      public System.Collections.IEnumerator Dialog(List<string>charList, int charID, string dialog,List<string> diaList, int timePerLetter )
     {
-        player.dia = true;
+        player.freeze = true;
         int l = 0;
         int o = 1;
         charName.text = charList[charID];

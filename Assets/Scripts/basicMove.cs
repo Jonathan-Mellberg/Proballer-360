@@ -19,7 +19,7 @@ public class basicMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!dia)
+        if (!freeze)
         {
             MovePlayer();
             LookAround();
