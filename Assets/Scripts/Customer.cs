@@ -10,15 +10,14 @@ public class Customer : MonoBehaviour
     // at end of day, get final score, debug log list of customer
 
     // pool of orders
-    [HideInInspector] public bool angry;
-    [HideInInspector] public bool happy;
-
     [SerializeField] private string[] orders;
-    [SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
+    //[SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
     
     private ScoreV2 score;
     private CustomerListV2 customerList;
     private BillboardRenderer bill;
+    private bool angry;
+    private bool happy;
 
     private void Awake()
     {
@@ -26,7 +25,7 @@ public class Customer : MonoBehaviour
         score = customerList.gameObject.GetComponent<ScoreV2>();
 
         bill = gameObject.GetComponent<BillboardRenderer>();
-        bill.billboard = sprites[0];
+        //bill.billboard = sprites[0];
     }
 
     private void GenerateOrder()
@@ -34,15 +33,24 @@ public class Customer : MonoBehaviour
         // generate order
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) CompleteOrder();
+    }
+
     public void CompleteOrder()
     {
-        int customerScore = score.ratings[customerList.customerIndex].score;
+        //int customerScore = score.ratings[customerList.customerIndex].score;
+        int customerScore = Random.Range(0, 100);
+        Debug.Log("Fuck");
+
 
         if (customerScore <= score.killThreshold) Kill();
         if (customerScore <= score.angryThreshold) angry = true;
         if (customerScore <= score.happyThreshold) happy = true;
 
-        customerList.customerIndex++;
+        Debug.Log("Ohio");
+
         Leave();
     }
 

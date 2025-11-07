@@ -5,8 +5,7 @@ public class CustomerListV2 : MonoBehaviour
 {
     public static CustomerListV2 instance { get; private set; }
 
-    public GameObject[] charachters;
-    public Customer[] customers;
+    public GameObject[] customers;
 
     [HideInInspector] public int customerCount = 0;
     [HideInInspector] public int customerIndex;
@@ -31,24 +30,26 @@ public class CustomerListV2 : MonoBehaviour
 
         else if (instance != this)
             Destroy(gameObject);
-
-        queuePositions = new Transform[customerLimit];
     }
 
     private void FixedUpdate()
     {
-        if (customerCount > customerLimit && !spawning) StartCoroutine(CustomerSpawn());
+        Debug.Log(customerIndex);
+        if (customerCount < customerLimit && customerIndex < customers.Length && !spawning) StartCoroutine(CustomerSpawn());
     }
 
     private void SpawnCustomer()
     {
-        Customer customer = new Customer();
-        Instantiate(customer, customerSpawn.position, Quaternion.identity);
-        customer.StartCoroutine(customer.MoveCustomer(queuePositions[customerCount + 1], customerWalkSpeed));
+        GameObject customerObj = Instantiate(customers[customerIndex], customerSpawn.position, Quaternion.identity);
+        Customer customerScript = customerObj.GetComponent<Customer>();
+
+        customerScript.StartCoroutine(customerScript.MoveCustomer(queuePositions[customerCount], customerWalkSpeed));
+        customerIndex++;
     }
 
     private IEnumerator CustomerSpawn()
     {
+        Debug.Log("VPK");
         spawning = true;
         float waitTime = Random.Range(spawnTimeVariation, -1 * spawnTimeVariation) + customerSpawnTime;
         yield return new WaitForSeconds(waitTime);
