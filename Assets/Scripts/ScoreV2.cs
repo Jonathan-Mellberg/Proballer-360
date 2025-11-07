@@ -18,7 +18,7 @@ public class ScoreV2 : MonoBehaviour
 
     public void DecreaseScore(int value)
     {
-        int index = CustomerList.instance.customerIndex;
+        int index = CustomerListV2.instance.customerIndex;
         ratings[index].score -= value;
         if (ratings[index].score <= 0) ratings[index].score = 0;
     }
