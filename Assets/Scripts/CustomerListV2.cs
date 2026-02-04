@@ -49,7 +49,6 @@ public class CustomerListV2 : MonoBehaviour
 
     private IEnumerator CustomerSpawn()
     {
-        Debug.Log("VPK");
         spawning = true;
         float waitTime = Random.Range(spawnTimeVariation, -1 * spawnTimeVariation) + customerSpawnTime;
         yield return new WaitForSeconds(waitTime);

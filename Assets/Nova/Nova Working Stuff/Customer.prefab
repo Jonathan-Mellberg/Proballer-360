@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 33264253441825629}
   - component: {fileID: 5000289894404474187}
   - component: {fileID: 2368376332219468364}
+  - component: {fileID: -8700466904795946259}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -124,6 +125,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ca4941508c1404fad75fbf5069b288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
-  angry: 0
-  happy: 0
   orders: []
+--- !u!114 &-8700466904795946259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233365751748775433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f5b9f99722d3946aad89d314ebdf01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cust_Timer
+  bar: {fileID: 0}
+  time: 120
+  angerFactor: 2

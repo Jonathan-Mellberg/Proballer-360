@@ -9,7 +9,6 @@ public class NPC_Dia : Interaction
     public basicMove player;
     public TextMeshPro text;
     public TextMeshPro charName;
-    //float timer;
 
     /*
     void Dialog(string text, string name)
@@ -20,16 +19,17 @@ public class NPC_Dia : Interaction
         template_clone.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = name;
     }
     */
+
     public override void Interact()
     {
-        
+        //StartCoroutine(Dialog())
     }
     
-     public System.Collections.IEnumerator Dialog(List<string>charList, int charID, string dialog,List<string> diaList, int timePerLetter )
+    public System.Collections.IEnumerator Dialog(List<string>charList, int charID, string dialog,List<string> diaList, float timePerLetter )
     {
         player.freeze = true;
         int l = 0;
-        int o = 1;
+        int o = 0;
         charName.text = charList[charID];
         for (int i = 0; i < diaList[o].Length; i++)
         {

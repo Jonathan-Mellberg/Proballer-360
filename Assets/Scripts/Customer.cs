@@ -42,14 +42,10 @@ public class Customer : MonoBehaviour
     {
         //int customerScore = score.ratings[customerList.customerIndex].score;
         int customerScore = Random.Range(0, 100);
-        Debug.Log("Fuck");
-
 
         if (customerScore <= score.killThreshold) Kill();
         if (customerScore <= score.angryThreshold) angry = true;
         if (customerScore <= score.happyThreshold) happy = true;
-
-        Debug.Log("Ohio");
 
         Leave();
     }
