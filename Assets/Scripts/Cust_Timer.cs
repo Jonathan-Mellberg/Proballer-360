@@ -4,23 +4,18 @@ using System.Collections;
 
 public class Cust_Timer : MonoBehaviour
 {
-    public float time = 120;
-
-    [SerializeField] Image bar;
-    [SerializeField] int angerFactor = 2; 
+    [SerializeField] private float time = 120;
+    [SerializeField] int angerFactor = 2;
+    private Image bar;
 
     private float startTime;
     private float timeDrain = 1;
     private bool iritated = false;
 
-    private void Start()
-    {
-        bar = GameObject.Find("SuperSmexBarrrr").GetComponent<Image>();
-        StartTimer();
-    }
-
     public void StartTimer()
     {
+        bar = transform.parent.GetComponent<CustomerListV2>().patienceBar;
+        //bar = GameObject.Find("PatienceBar").GetComponent<Image>();
         startTime = time;
 
         if (iritated)
@@ -33,7 +28,7 @@ public class Cust_Timer : MonoBehaviour
     private IEnumerator TimeMeterDrain()
     {
         while (time > 0)
-        {
+        {            
             bar.fillAmount =  time / startTime;
             time -= timeDrain;
             yield return new WaitForSeconds(1);

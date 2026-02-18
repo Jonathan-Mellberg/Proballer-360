@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 public class Customer : MonoBehaviour
 {
@@ -9,20 +10,26 @@ public class Customer : MonoBehaviour
     // next customer lerps forward to point
     // at end of day, get final score, debug log list of customer
 
+    public int Id { get; private set; }
+
     // pool of orders
     [SerializeField] private string[] orders;
     //[SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
     
     private ScoreV2 score;
     private CustomerListV2 customerList;
+    private Cust_Timer custTimer;
     private BillboardRenderer bill;
     private bool angry;
     private bool happy;
 
-    private void Awake()
+    public void GetVariables()
     {
         customerList = CustomerListV2.instance;
         score = customerList.gameObject.GetComponent<ScoreV2>();
+        custTimer = gameObject.GetComponent<Cust_Timer>();
+        custTimer.StartTimer();
+        customerList.currentCustomerId = Id;
 
         bill = gameObject.GetComponent<BillboardRenderer>();
         //bill.billboard = sprites[0];
@@ -31,6 +38,7 @@ public class Customer : MonoBehaviour
     private void GenerateOrder()
     {
         // generate order
+
     }
 
     private void Update()
@@ -52,6 +60,7 @@ public class Customer : MonoBehaviour
 
     private void Leave()
     {
+        Destroy(custTimer);
         Destroy(gameObject);
         customerList.customerCount--;
     }

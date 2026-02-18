@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class CustomerListV2 : MonoBehaviour
 {
@@ -9,9 +11,17 @@ public class CustomerListV2 : MonoBehaviour
 
     [HideInInspector] public int customerCount = 0;
     [HideInInspector] public int customerIndex;
+    [HideInInspector] public int currentCustomerId;
 
+    [Header("References")]
+    public GameObject player;
+    public TextMeshProUGUI nameTextBox;
+    public TextMeshProUGUI dialogueTextBox;
+    public Image patienceBar;
     [SerializeField] private Transform customerSpawn;
     [SerializeField] private Transform[] queuePositions;
+
+    [Header ("Variables")]
     [SerializeField] private int customerSpawnTime = 30;
     [SerializeField] private int spawnTimeVariation = 5;
     [SerializeField] private int customerLimit = 5;
@@ -20,28 +30,31 @@ public class CustomerListV2 : MonoBehaviour
     private bool spawning;
 
     // Singleton Class
-    void Awake()
+    private void Awake()
     {
-        if (instance == null)
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
         }
 
-        else if (instance != this)
-            Destroy(gameObject);
+        instance = this;
+
     }
+
 
     private void FixedUpdate()
     {
-        Debug.Log(customerIndex);
         if (customerCount < customerLimit && customerIndex < customers.Length && !spawning) StartCoroutine(CustomerSpawn());
     }
 
     private void SpawnCustomer()
     {
         GameObject customerObj = Instantiate(customers[customerIndex], customerSpawn.position, Quaternion.identity);
+        customerObj.transform.SetParent(gameObject.transform);
+
         Customer customerScript = customerObj.GetComponent<Customer>();
+        customerScript.GetVariables();
 
         customerScript.StartCoroutine(customerScript.MoveCustomer(queuePositions[customerCount], customerWalkSpeed));
         customerIndex++;

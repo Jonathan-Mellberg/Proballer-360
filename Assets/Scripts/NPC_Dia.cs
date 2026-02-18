@@ -1,58 +1,65 @@
 using UnityEngine;
 using TMPro;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class NPC_Dia : Interaction
 {
-    public GameObject template;
-    public GameObject canvas;
-    public basicMove player;
-    public TextMeshPro text;
-    public TextMeshPro charName;
+    [SerializeField] private float timePerLetter = 0.1f;
+    [SerializeField] private string[] dialogueList;
+    [SerializeField] private string proceedButton;
+    private basicMove player;
+    private TextMeshProUGUI tmp;
+    private TextMeshProUGUI nameTmp;
+    private CustomerListV2 customerList;
 
-    /*
-    void Dialog(string text, string name)
+    private void Awake()
     {
-        GameObject template_clone = Instantiate(template, template.transform);
-        template_clone.transform.parent = canvas.transform;
-        template_clone.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = text;
-        template_clone.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = name;
+        customerList = CustomerListV2.instance;
+        tmp = customerList.dialogueTextBox;
+        nameTmp = customerList.nameTextBox;
+
+        if (customerList.player != null)
+            player = customerList.player.GetComponent<basicMove>();
     }
-    */
 
     public override void Interact()
     {
-        //StartCoroutine(Dialog())
+        tmp.enabled = true;
+        nameTmp.enabled = true;
+        StartCoroutine(Dialog());
     }
-    
-    public System.Collections.IEnumerator Dialog(List<string>charList, int charID, string dialog,List<string> diaList, float timePerLetter )
+
+    public System.Collections.IEnumerator Dialog()
     {
         player.freeze = true;
-        int l = 0;
-        int o = 0;
-        charName.text = charList[charID];
-        for (int i = 0; i < diaList[o].Length; i++)
+        Cursor.lockState = CursorLockMode.Confined;
+
+        string dialog;
+
+        nameTmp.text = gameObject.name;
+
+        for (int i = 0; i < dialogueList.Length; i++)
         {
-            
-            dialog = diaList[o];
-            for (int v = 0; v < dialog.Length; v++)
-            {
-                l++;
-                text.text = dialog.Substring(0, l);
-            }
-            if (l >= dialog.Length)
-            {
-                while (!Input.GetMouseButton(0))
-                {   
+            dialog = dialogueList[i];
 
-                }
-                o++;
-                text.text = diaList[o];
+            // Print dialogue
+            for (int v = 0; v <= dialog.Length; v++)
+            {
+                tmp.text = dialog[..v];
+                yield return new WaitForSeconds(timePerLetter);
             }
 
+            while (!Input.GetKeyDown(KeyCode.B))
+                yield return null;
+
+            yield return new WaitForSeconds(0.5f);
         }
+
+        gameObject.GetComponent<Cust_Timer>().StartTimer();
+        player.freeze = false;
         Cursor.lockState = CursorLockMode.Locked;
-        yield return null;
+        tmp.enabled = false;
+        nameTmp.enabled = false;
     }
+
 }
-   
