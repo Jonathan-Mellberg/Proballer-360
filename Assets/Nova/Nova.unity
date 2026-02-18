@@ -1510,6 +1510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PatienceBar
       objectReference: {fileID: 0}
+    - target: {fileID: 5195944532944648553, guid: 3a711e6f0f6a5b24eb5f7af3a1cb0bfe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

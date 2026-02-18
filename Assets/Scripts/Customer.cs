@@ -27,8 +27,6 @@ public class Customer : MonoBehaviour
     {
         customerList = CustomerListV2.instance;
         score = customerList.gameObject.GetComponent<ScoreV2>();
-        custTimer = gameObject.GetComponent<Cust_Timer>();
-        custTimer.StartTimer();
         customerList.currentCustomerId = Id;
 
         bill = gameObject.GetComponent<BillboardRenderer>();
