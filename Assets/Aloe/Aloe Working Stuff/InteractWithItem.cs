@@ -18,8 +18,9 @@ public class InteractWithItem : MonoBehaviour
     private GameObject billObject;
     private bool canInteract = false;
     private bool canPickUpp = false;
-    private bool holdingObj = false;
     private RaycastHit hit;
+
+    public bool holdingObj = false;
 
     private void Awake()
     {

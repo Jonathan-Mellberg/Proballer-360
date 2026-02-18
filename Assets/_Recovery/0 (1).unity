@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 351330656}
   - component: {fileID: 351330659}
   - component: {fileID: 351330658}
+  - component: {fileID: 351330657}
   m_Layer: 0
   m_Name: coffee_cup
   m_TagString: Untagged
@@ -724,6 +725,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448678804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &351330657
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351330655}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &351330658
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -917,8 +939,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448678803}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 1.174, z: 3.53}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.093, y: 1.329, z: 3.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1066,7 +1088,7 @@ GameObject:
   - component: {fileID: 537969953}
   - component: {fileID: 537969956}
   - component: {fileID: 537969955}
-  - component: {fileID: 537969957}
+  - component: {fileID: 537969954}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1089,6 +1111,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1550699635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &537969954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537969952}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &537969955
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1145,27 +1188,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537969952}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &537969957
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537969952}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &619464088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2477,7 @@ Transform:
   m_GameObject: {fileID: 1211133782}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1620001, y: 1.321, z: 3.644}
+  m_LocalPosition: {x: -1.174, y: 1.329, z: 3.649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2842,9 +2864,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1550699635}
   - component: {fileID: 1550699634}
-  - component: {fileID: 1550699636}
   - component: {fileID: 1550699633}
   - component: {fileID: 1550699637}
+  - component: {fileID: 1550699636}
   m_Layer: 0
   m_Name: CoffeeMaker
   m_TagString: Interacteable
@@ -2887,8 +2909,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.33913624, y: 0.8232273, z: 0.17727613}
-  m_Center: {x: 0.006990969, y: 0.40692836, z: 0.28627336}
+  m_Size: {x: 0.33913624, y: 0.8232273, z: 0.24850714}
+  m_Center: {x: 0.006990969, y: 0.40692836, z: 0.25065786}
 --- !u!4 &1550699635
 Transform:
   m_ObjectHideFlags: 0
@@ -2926,8 +2948,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.15929234, z: 0.4070964}
-  m_Center: {x: 0, y: 0.03223449, z: 0.006505966}
+  m_Size: {x: 1.091578, y: 0.1519202, z: 0.43733788}
+  m_Center: {x: -0.045789003, y: 0.038666666, z: -0.055160046}
 --- !u!114 &1550699637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3164,6 +3186,7 @@ GameObject:
   - component: {fileID: 1655234676}
   - component: {fileID: 1655234679}
   - component: {fileID: 1655234678}
+  - component: {fileID: 1655234677}
   m_Layer: 0
   m_Name: coffee_cup (1)
   m_TagString: Untagged
@@ -3186,6 +3209,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448678804}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1655234677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655234675}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1655234678
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3391,6 +3435,7 @@ GameObject:
   - component: {fileID: 1796296140}
   - component: {fileID: 1796296143}
   - component: {fileID: 1796296142}
+  - component: {fileID: 1796296141}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -3413,6 +3458,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1550699635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1796296141
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796296139}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1796296142
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3512,6 +3578,7 @@ GameObject:
   - component: {fileID: 1865855800}
   - component: {fileID: 1865855803}
   - component: {fileID: 1865855802}
+  - component: {fileID: 1865855801}
   m_Layer: 0
   m_Name: coffee_cup (3)
   m_TagString: Untagged
@@ -3534,6 +3601,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448678804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1865855801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865855799}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1865855802
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3601,6 +3689,7 @@ GameObject:
   - component: {fileID: 1933837184}
   - component: {fileID: 1933837187}
   - component: {fileID: 1933837186}
+  - component: {fileID: 1933837185}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -3623,6 +3712,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1550699635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1933837185
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933837183}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1933837186
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3736,6 +3846,7 @@ GameObject:
   - component: {fileID: 2088427409}
   - component: {fileID: 2088427412}
   - component: {fileID: 2088427411}
+  - component: {fileID: 2088427410}
   m_Layer: 0
   m_Name: coffee_cup (2)
   m_TagString: Untagged
@@ -3758,6 +3869,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448678804}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &2088427410
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088427408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2088427411
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3831,9 +3963,9 @@ SceneRoots:
   - {fileID: 130636248}
   - {fileID: 1188924362}
   - {fileID: 1247569688}
+  - {fileID: 448678804}
   - {fileID: 481401743}
   - {fileID: 1936269349}
-  - {fileID: 448678804}
   - {fileID: 1550699635}
   - {fileID: 27673080}
   - {fileID: 1824273904}
