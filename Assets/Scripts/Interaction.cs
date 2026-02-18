@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public abstract class Interaction : MonoBehaviour
+public class Interaction : MonoBehaviour
 {
-    public abstract void Interact();
+    public virtual void Interact()
+    {
+        Debug.Log("Ran virtual method base.");
+    }
 }

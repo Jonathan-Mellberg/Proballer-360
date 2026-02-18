@@ -7,7 +7,8 @@ public class pick_Upp : MonoBehaviour
     [SerializeField] private string interacteableTag = "Interacteable";
     [SerializeField] private string pickuppableTag = "PickUppable";
     [SerializeField] private GameObject holdPoint;
-    [SerializeField] private Rigidbody rig;
+       
+    private Rigidbody rig;
 
     private GameObject cam;
     private GameObject obj;
