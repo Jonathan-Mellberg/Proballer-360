@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class coffeeMaking : Interaction
@@ -5,7 +6,7 @@ public class coffeeMaking : Interaction
     public GameObject coffeeStream;
     public GameObject coffee;
 
-    public float growSpeed = 0.5f;
+    public float growSpeed = 0.1f;
     float minScale = 0.01f;
     float maxScale = 1f;
 
@@ -25,11 +26,11 @@ public class coffeeMaking : Interaction
         Debug.Log("interact");
         if (canFill)
         {
-            FillCup();
+            StartCoroutine(FillCup());
         }
     }
 
-    private void FillCup()
+    private IEnumerator FillCup()
     {
         coffee.SetActive(true);
         while (Input.GetKey(KeyCode.E))
@@ -47,9 +48,12 @@ public class coffeeMaking : Interaction
 
                 coffee.transform.localScale = new Vector3(1f, newScale, 1f);
             }
-            else
+            else if (Input.GetKeyUp(KeyCode.E))
+            {
                 coffeeStream.SetActive(false);
+            }
+
+            yield return null;
         }
-        
     }
 }
