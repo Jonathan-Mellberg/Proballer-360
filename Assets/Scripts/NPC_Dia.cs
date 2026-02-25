@@ -60,6 +60,7 @@ public class NPC_Dia : Interaction
         Cursor.lockState = CursorLockMode.Locked;
         tmp.enabled = false;
         nameTmp.enabled = false;
+        Destroy(this);
     }
 
 }

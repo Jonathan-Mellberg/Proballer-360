@@ -63,7 +63,7 @@ public class CustomerListV2 : MonoBehaviour
     private IEnumerator CustomerSpawn()
     {
         spawning = true;
-        float waitTime = Random.Range(spawnTimeVariation, -1 * spawnTimeVariation) + customerSpawnTime;
+        float waitTime = Random.Range(spawnTimeVariation * -1, spawnTimeVariation) + customerSpawnTime;
         yield return new WaitForSeconds(waitTime);
         SpawnCustomer();
         customerCount++;

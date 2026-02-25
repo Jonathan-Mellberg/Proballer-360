@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ScoreV2 : MonoBehaviour
 {
+    public OrderReader orderReader;
     public int killThreshold = 20;
     public int angryThreshold = 30;
     public int happyThreshold = 70;

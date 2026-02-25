@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Linq;
+using NUnit.Framework;
 
 public class Customer : MonoBehaviour
 {
@@ -15,11 +18,14 @@ public class Customer : MonoBehaviour
     // pool of orders
     [SerializeField] private string[] orders;
     //[SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
+    [SerializeField] private int orderAmount = 2;
+    [SerializeField] private int amountVariation = 1;
     
     private ScoreV2 score;
     private CustomerListV2 customerList;
     private Cust_Timer custTimer;
     private BillboardRenderer bill;
+    private OrderReader orderReader;
     private bool angry;
     private bool happy;
 
@@ -27,6 +33,7 @@ public class Customer : MonoBehaviour
     {
         customerList = CustomerListV2.instance;
         score = customerList.gameObject.GetComponent<ScoreV2>();
+        orderReader = score.orderReader;
         customerList.currentCustomerId = Id;
 
         bill = gameObject.GetComponent<BillboardRenderer>();
@@ -36,7 +43,22 @@ public class Customer : MonoBehaviour
     private void GenerateOrder()
     {
         // generate order
+        List<string> orderList = new List<string>();
+        string order;
+        int amount = Random.Range(amountVariation * -1, amountVariation) + orderAmount;
+        int i = 0;
 
+        while (i < orderAmount)
+        {
+            order = orders[Random.Range(0, amount)];
+            if (orderList.Contains(order))
+                return;
+
+            orderList.Add(order);
+            i++;
+        }
+
+        orderReader.UpdateOrder(orderList.ToArray());
     }
 
     private void Update()
