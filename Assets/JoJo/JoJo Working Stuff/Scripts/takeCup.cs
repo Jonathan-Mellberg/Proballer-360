@@ -29,6 +29,7 @@ public class takeCup : MonoBehaviour
             other.transform.rotation = Quaternion.identity;
 
             gameObject.GetComponent<coffeeMaking>().canFill = true;
+            gameObject.GetComponent<coffeeMaking>().coffee = other.transform.Find("coffee").gameObject;
         }
     }
 }

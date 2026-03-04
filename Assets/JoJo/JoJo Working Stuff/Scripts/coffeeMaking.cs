@@ -10,13 +10,15 @@ public class coffeeMaking : Interaction
     float minScale = 0.01f;
     float maxScale = 1f;
 
-    [HideInInspector] public bool canFill = false;
+    
+
+    [HideInInspector] public bool canFill = false; // true when coffee can be added
 
     void Start()
     {
-        coffee.transform.localScale = new Vector3(1f, minScale, 1f);
+        //coffee.transform.localScale = new Vector3(1f, minScale, 1f);
         coffeeStream.SetActive(false);
-        coffee.SetActive(false);
+        //coffee.SetActive(false);
     }
 
 
@@ -35,12 +37,12 @@ public class coffeeMaking : Interaction
         coffee.SetActive(true);
         while (Input.GetKey(KeyCode.E))
         {
-            if (Input.GetKey(KeyCode.E) && coffee.transform.localScale.y == maxScale)
+            if (Input.GetKey(KeyCode.E) && coffee.transform.localScale.y == maxScale) // full so dont show stream
             {
                 Debug.Log("full");
                 coffeeStream.SetActive(false);
             }
-            else if (Input.GetKey(KeyCode.E))
+            else if (Input.GetKey(KeyCode.E)) //
             {
                 Debug.Log("grow");
                 coffeeStream.SetActive(true);
@@ -48,11 +50,12 @@ public class coffeeMaking : Interaction
 
                 coffee.transform.localScale = new Vector3(1f, newScale, 1f);
             }
-            else if (Input.GetKeyUp(KeyCode.E))
-            {
-                coffeeStream.SetActive(false);
-            }
+            yield return null;
+        }
 
+        while (!Input.GetKey(KeyCode.E))
+        {
+            coffeeStream.SetActive(false);
             yield return null;
         }
     }
