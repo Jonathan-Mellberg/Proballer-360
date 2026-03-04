@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8061741138069288190}
   - component: {fileID: 5000289894404474187}
   - component: {fileID: 2368376332219468364}
-  - component: {fileID: 4809656130864036542}
-  - component: {fileID: -7434026810277558068}
-  - component: {fileID: 1600380669255458426}
-  - component: {fileID: -7361851250867115186}
+  - component: {fileID: -6949223085623505724}
+  - component: {fileID: -3238433629986434343}
+  - component: {fileID: 4890264550063310449}
+  - component: {fileID: -2556021303664618341}
   m_Layer: 0
-  m_Name: Joe Bat
+  m_Name: Andreas
   m_TagString: Interacteable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   orders: []
   orderAmount: 2
   amountVariation: 1
---- !u!114 &4809656130864036542
+--- !u!114 &-6949223085623505724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cust_Timer
   time: 120
   angerFactor: 2
---- !u!114 &-7434026810277558068
+--- !u!114 &-3238433629986434343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,14 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522efe5b5e94b394b81e36ad56697e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
-  timePerLetter: 0.1
+  timePerLetter: 0.05
   dialogueList:
-  - A guy like me only settles for the finest coffee.
-  - "I\u2019ll have you know, I was rated hottest vampire of 1888. I was so superior,
-    the other competitors didn\u2019t even show up!"
-  - I will taste blood one way or another!
+  - "hi\u2026"
+  - ...coffee please.
+  - friend?
   proceedButton: 
---- !u!212 &1600380669255458426
+--- !u!212 &4890264550063310449
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,18 +152,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a945c823a0b9e0d43b1e5777ff467700, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e90440ea1e6f374b88b8db026467a81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 21.960001, y: 37.10733}
+  m_Size: {x: 27.603514, y: 33.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7361851250867115186
+--- !u!114 &-2556021303664618341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

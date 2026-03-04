@@ -13,8 +13,6 @@ public class Customer : MonoBehaviour
     // next customer lerps forward to point
     // at end of day, get final score, debug log list of customer
 
-    public int Id { get; private set; }
-
     // pool of orders
     [SerializeField] private string[] orders;
     //[SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
@@ -34,7 +32,6 @@ public class Customer : MonoBehaviour
         customerList = CustomerListV2.instance;
         score = customerList.gameObject.GetComponent<ScoreV2>();
         orderReader = score.orderReader;
-        customerList.currentCustomerId = Id;
 
         bill = gameObject.GetComponent<BillboardRenderer>();
         //bill.billboard = sprites[0];

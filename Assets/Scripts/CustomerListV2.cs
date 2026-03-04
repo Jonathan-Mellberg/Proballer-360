@@ -10,13 +10,14 @@ public class CustomerListV2 : MonoBehaviour
     public GameObject[] customers;
 
     [HideInInspector] public int customerCount = 0;
-    [HideInInspector] public int customerIndex;
-    [HideInInspector] public int currentCustomerId;
+    [HideInInspector] public int customerIndex = 0;
 
     [Header("References")]
     public GameObject player;
+    public Image textBox;
     public TextMeshProUGUI nameTextBox;
     public TextMeshProUGUI dialogueTextBox;
+    public TextMeshProUGUI endTextPopup;
     public Image patienceBar;
     [SerializeField] private Transform customerSpawn;
     [SerializeField] private Transform[] queuePositions;

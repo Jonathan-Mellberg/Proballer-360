@@ -1,9 +1,11 @@
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class NPC_Dia : Interaction
 {
+
     [SerializeField] private float timePerLetter = 0.1f;
     [SerializeField] private string[] dialogueList;
     [SerializeField] private string proceedButton;
@@ -11,12 +13,17 @@ public class NPC_Dia : Interaction
     private TextMeshProUGUI tmp;
     private TextMeshProUGUI nameTmp;
     private CustomerListV2 customerList;
+    private TextMeshProUGUI endText;
+    private Image textBox;
+    private bool speaking;
 
     private void Awake()
     {
         customerList = CustomerListV2.instance;
         tmp = customerList.dialogueTextBox;
         nameTmp = customerList.nameTextBox;
+        textBox = customerList.textBox;
+        endText = customerList.endTextPopup;
 
         if (customerList.player != null)
             player = customerList.player.GetComponent<basicMove>();
@@ -24,14 +31,20 @@ public class NPC_Dia : Interaction
 
     public override void Interact()
     {
-        tmp.enabled = true;
-        nameTmp.enabled = true;
+        if (speaking)
+            return;
+
         StartCoroutine(Dialog());
     }
 
     public System.Collections.IEnumerator Dialog()
     {
+        textBox.gameObject.SetActive(true);
+        tmp.gameObject.SetActive(true);
+        nameTmp.gameObject.SetActive(true);
         player.freeze = true;
+        speaking = true;
+
         Cursor.lockState = CursorLockMode.Confined;
 
         string dialog;
@@ -47,19 +60,32 @@ public class NPC_Dia : Interaction
             {
                 tmp.text = dialog[..v];
                 yield return new WaitForSeconds(timePerLetter);
+
+                if (Input.GetKey(KeyCode.B))
+                {
+                    tmp.text = dialog;
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+                }
             }
+
+            endText.gameObject.SetActive(true);
 
             while (!Input.GetKeyDown(KeyCode.B))
                 yield return null;
 
-            yield return new WaitForSeconds(0.5f);
+            endText.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
         }
 
         gameObject.GetComponent<Cust_Timer>().StartTimer();
-        player.freeze = false;
         Cursor.lockState = CursorLockMode.Locked;
-        tmp.enabled = false;
-        nameTmp.enabled = false;
+
+        textBox.gameObject.SetActive(false);
+        tmp.gameObject.SetActive(false);
+        nameTmp.gameObject.SetActive(false);
+        player.freeze = false;
+        speaking = false;
         Destroy(this);
     }
 
