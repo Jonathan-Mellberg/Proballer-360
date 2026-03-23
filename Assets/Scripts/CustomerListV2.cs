@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class CustomerListV2 : MonoBehaviour
 {
     public static CustomerListV2 instance { get; private set; }
 
     public GameObject[] customers;
-
-    [HideInInspector] public int customerCount = 0;
     [HideInInspector] public int customerIndex = 0;
 
     [Header("References")]
@@ -19,15 +18,19 @@ public class CustomerListV2 : MonoBehaviour
     public TextMeshProUGUI dialogueTextBox;
     public TextMeshProUGUI endTextPopup;
     public Image patienceBar;
-    [SerializeField] private Transform customerSpawn;
-    [SerializeField] private Transform[] queuePositions;
 
-    [Header ("Variables")]
-    [SerializeField] private int customerSpawnTime = 30;
-    [SerializeField] private int spawnTimeVariation = 5;
-    [SerializeField] private int customerLimit = 5;
-    [SerializeField] private float customerWalkSpeed = 1f;
+    private GameObject customerObj;
 
+    [SerializeField] private Transform SpawnPos;
+    [SerializeField] private Transform[] CounterPos;
+    [SerializeField] private Transform[] WaitPos;
+    [SerializeField] private Transform[] leavePos;
+
+    [Header("Variables")]
+    [SerializeField] private float waitTime = 10f;
+    [SerializeField] private float customerSpeed = 1f;
+
+    private bool customerActive;
     private bool spawning;
 
     // Singleton Class
@@ -46,28 +49,46 @@ public class CustomerListV2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (customerCount < customerLimit && customerIndex < customers.Length && !spawning) StartCoroutine(CustomerSpawn());
+        if (!customerActive)
+        {
+            StartCoroutine(CustomerSpawn());
+        }
     }
 
-    private void SpawnCustomer()
+    private void InitializeCustomer()
     {
-        GameObject customerObj = Instantiate(customers[customerIndex], customerSpawn.position, Quaternion.identity);
+        customerObj = Instantiate(customers[customerIndex], SpawnPos.position, Quaternion.identity);
         customerObj.transform.SetParent(gameObject.transform);
 
         Customer customerScript = customerObj.GetComponent<Customer>();
         customerScript.GetVariables();
 
-        customerScript.StartCoroutine(customerScript.MoveCustomer(queuePositions[customerCount], customerWalkSpeed));
         customerIndex++;
     }
 
     private IEnumerator CustomerSpawn()
     {
-        spawning = true;
-        float waitTime = Random.Range(spawnTimeVariation * -1, spawnTimeVariation) + customerSpawnTime;
+        customerActive = true;
         yield return new WaitForSeconds(waitTime);
-        SpawnCustomer();
-        customerCount++;
-        spawning = false;
+
+        InitializeCustomer();
+        // move customer to counter pos
+        foreach(Transform pos in CounterPos)
+        {
+            while (customerObj.transform.position != pos.position)
+            {
+                MoveCustomer(customerObj.transform, pos);
+                yield return null;
+            }
+        }
+
+    }
+
+    private void MoveCustomer(Transform customer, Transform endPoint)
+    {
+        if (customer.position != endPoint.position)
+        {
+            customer.localPosition = Vector3.MoveTowards(customer.transform.localPosition, endPoint.position, customerSpeed * Time.deltaTime);
+        }
     }
 }

@@ -70,7 +70,6 @@ public class Customer : MonoBehaviour
 
         if (customerScore <= score.killThreshold) Kill();
         if (customerScore <= score.angryThreshold) angry = true;
-        if (customerScore <= score.happyThreshold) happy = true;
 
         Leave();
     }
@@ -79,7 +78,6 @@ public class Customer : MonoBehaviour
     {
         Destroy(custTimer);
         Destroy(gameObject);
-        customerList.customerCount--;
     }
 
     public IEnumerator MoveCustomer(Transform targetPos, float moveTime)

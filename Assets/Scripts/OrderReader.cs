@@ -7,6 +7,7 @@ public class OrderReader : Interaction
     [SerializeField] private BoxCollider platterHitbox;
     [SerializeField] private ScoreV2 score;
     private string[] orders;
+    [SerializeField] private int penalty = 20;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,13 +50,19 @@ public class OrderReader : Interaction
         }
 
         // Check for incorrect items
-        int incorrectItems = 0;
+        bool incorrectItem = false;
         foreach (string item in items)
         {
             if (!orders.Contains(item))
             {
-                incorrectItems++;
+                incorrectItem = true;
             }
+        }
+
+        if (incorrectItem)
+        {
+            score.DecreaseScore(penalty);
+            // say thing
         }
     }
 }

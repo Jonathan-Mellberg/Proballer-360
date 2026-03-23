@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class NPC_Dia : Interaction
@@ -85,8 +84,6 @@ public class NPC_Dia : Interaction
         tmp.gameObject.SetActive(false);
         nameTmp.gameObject.SetActive(false);
         player.freeze = false;
-        speaking = false;
-        Destroy(this);
     }
 
 }
