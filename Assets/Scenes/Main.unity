@@ -288,6 +288,12 @@ MonoBehaviour:
   customers: []
   customerCount: 0
   customerIndex: 0
+  player: {fileID: 0}
+  textBox: {fileID: 0}
+  nameTextBox: {fileID: 0}
+  dialogueTextBox: {fileID: 0}
+  endTextPopup: {fileID: 0}
+  patienceBar: {fileID: 0}
   customerSpawn: {fileID: 652643669}
   queuePositions:
   - {fileID: 8061741138069288190, guid: 46cf5e25859f194478f43c2da47f0465, type: 3}
@@ -596,6 +602,7 @@ GameObject:
   - component: {fileID: 750034496}
   - component: {fileID: 750034495}
   - component: {fileID: 750034494}
+  - component: {fileID: 750034500}
   m_Layer: 0
   m_Name: pla
   m_TagString: Untagged
@@ -740,6 +747,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750034500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750034493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f600882858f180a488d877704f54d082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractWithItem
+  interactRadius: 3
+  interacteableTag: Interacteable
+  pickuppableTag: PickUppable
+  holdPoint: {fileID: 0}
+  rig: {fileID: 0}
+  holdingObj: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

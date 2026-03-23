@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class pauseMenu : MonoBehaviour
 {
-    public GameObject panel;
+    public GameObject panel; // add in editor
 
     basicMove playerMove;
     bool paused = false;

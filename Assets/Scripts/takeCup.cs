@@ -22,7 +22,7 @@ public class takeCup : MonoBehaviour
     {
         Debug.Log(other.name);
 
-        if (other.name == "cup" && !interact.holdingObj)
+        if (other.name == "cup_coffee" && !interact.holdingObj)
         {
             other.transform.SetParent(coffeeplace);
             other.transform.position =  coffeeplace.position;

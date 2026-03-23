@@ -46,10 +46,12 @@ public class basicMove : MonoBehaviour
         // Get collision normal if touching something
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 0.6f))
         {
+
             // Project movement onto wall plane (slide)
             Vector3 projected = Vector3.ProjectOnPlane(desiredVelocity, hit.normal);
-            projected.y = rb.linearVelocity.y;
-            rb.linearVelocity = projected;
+            //projected.y = rb.linearVelocity.y;
+            //rb.linearVelocity = projected;
+            Debug.Log(projected);
         }
         else
         {
