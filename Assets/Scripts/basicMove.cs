@@ -49,8 +49,8 @@ public class basicMove : MonoBehaviour
 
             // Project movement onto wall plane (slide)
             Vector3 projected = Vector3.ProjectOnPlane(desiredVelocity, hit.normal);
-            //projected.y = rb.linearVelocity.y;
-            //rb.linearVelocity = projected;
+            projected.y = rb.linearVelocity.y;
+            rb.linearVelocity = projected;
             Debug.Log(projected);
         }
         else
