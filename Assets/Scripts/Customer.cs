@@ -1,9 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Linq;
-using NUnit.Framework;
 
 public class Customer : MonoBehaviour
 {
@@ -64,13 +61,16 @@ public class Customer : MonoBehaviour
 
     public void CompleteOrder()
     {
-        int customerScore = score.ratings[customerList.customerIndex].score;
+        /*
+        //int customerScore = score.ratings[customerList.customerIndex].score;
 
         bool win = customerScore >= score.killThreshold;
 
         if (spriteRenderer != null) spriteRenderer.sprite = win ? normalSprite : angrySprite;
         Npc_Dia.CompletionSpeech(win);
         if (win) Leave(); else Kill();
+        */
+        Leave();
     }
 
     private void Leave()
