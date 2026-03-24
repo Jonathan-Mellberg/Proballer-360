@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
   orders: []
+  normalSprite: {fileID: 0}
+  angrySprite: {fileID: 0}
   orderAmount: 2
   amountVariation: 1
 --- !u!114 &-8700466904795946259
@@ -79,12 +81,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
   timePerLetter: 0.05
-  dialogueList:
-  - Hurry up, idiot! My children are waiting for me at home! Unless you drove them
-    away with your brainwashing. Did you?!
-  - "Back in my day, we didn\u2019t have any stupid humans running around here!"
-  - Fine, gimme one of your coffees, then. Give me a solid reason to leave a bad
-    review of this dump.
+  StartDialogue:
+  - fuck
+  - shit
+  - cum
+  - balls
+  RepeatDialogue:
+  - bing
+  - bong
+  WinDialogue: []
+  LoseDialogue: []
   proceedButton: B
 --- !u!114 &-8911141754357760637
 MonoBehaviour:

@@ -627,37 +627,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &470828221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 470828222}
-  m_Layer: 0
-  m_Name: CounterPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &470828222
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 470828221}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0.5, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702645283
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CafeBuilding_NotOneObject
       objectReference: {fileID: 0}
+    - target: {fileID: 4518980002003577502, guid: 81117de05f2b99240b213fe8c3ed7833, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -1250141025732126548, guid: 81117de05f2b99240b213fe8c3ed7833, type: 3}
@@ -1020,6 +993,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.3, y: 0.25, z: 0.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1214135017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214135018}
+  m_Layer: 0
+  m_Name: WaitPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1214135018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214135017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3, y: 0.25, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2085,7 +2089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerListV2
   customers:
-  - {fileID: 3233365751748775433, guid: 46cf5e25859f194478f43c2da47f0465, type: 3}
+  - {fileID: 3199713293772222320, guid: 203dcceaf9222a543ac68b3965f11f43, type: 3}
   - {fileID: 3233365751748775433, guid: b8a11076adfc5cf47970cfada872502b, type: 3}
   - {fileID: 3233365751748775433, guid: a3df566636486764b846011074125880, type: 3}
   customerIndex: 0
@@ -2101,10 +2105,10 @@ MonoBehaviour:
   - {fileID: 1581260193}
   - {fileID: 815023330}
   - {fileID: 421888156}
-  WaitPos: []
-  leavePos: []
-  waitTime: 10
+  WaitPos: {fileID: 1214135018}
+  waitTime: 5
   customerSpeed: 1
+  customerActive: 0
 --- !u!4 &1721186421
 Transform:
   m_ObjectHideFlags: 0
@@ -2495,7 +2499,6 @@ SceneRoots:
   - {fileID: 1397791946}
   - {fileID: 1983237827}
   - {fileID: 702645291}
-  - {fileID: 470828222}
   - {fileID: 1691154928}
   - {fileID: 722105806}
   - {fileID: 1879760428}
@@ -2503,3 +2506,4 @@ SceneRoots:
   - {fileID: 1581260193}
   - {fileID: 815023330}
   - {fileID: 421888156}
+  - {fileID: 1214135018}

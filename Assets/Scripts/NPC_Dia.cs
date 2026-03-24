@@ -4,9 +4,13 @@ using UnityEngine.UI;
 
 public class NPC_Dia : Interaction
 {
+    [HideInInspector] public bool canSpeak;
 
     [SerializeField] private float timePerLetter = 0.1f;
-    [SerializeField] private string[] dialogueList;
+    [SerializeField] private string[] StartDialogue;
+    [SerializeField] private string[] RepeatDialogue;
+    [SerializeField] private string[] WinDialogue;
+    [SerializeField] private string[] LoseDialogue;
     [SerializeField] private string proceedButton;
     private basicMove player;
     private TextMeshProUGUI tmp;
@@ -14,7 +18,7 @@ public class NPC_Dia : Interaction
     private CustomerListV2 customerList;
     private TextMeshProUGUI endText;
     private Image textBox;
-    private bool speaking;
+    private bool spoken;
 
     private void Awake()
     {
@@ -30,29 +34,35 @@ public class NPC_Dia : Interaction
 
     public override void Interact()
     {
-        if (speaking)
+        Debug.Log(canSpeak);
+        if (!canSpeak)
             return;
 
-        StartCoroutine(Dialog());
+        string[] dia = spoken ? RepeatDialogue : StartDialogue;
+        StartCoroutine(Dialog(dia));
     }
 
-    public System.Collections.IEnumerator Dialog()
+    public void CompletionSpeech(bool win)
+    {
+        string[] dia = win ? WinDialogue : LoseDialogue;
+        StartCoroutine(Dialog(dia));
+    }
+
+    public System.Collections.IEnumerator Dialog(string[] dialogue)
     {
         textBox.gameObject.SetActive(true);
         tmp.gameObject.SetActive(true);
         nameTmp.gameObject.SetActive(true);
         player.freeze = true;
-        speaking = true;
-
-        Cursor.lockState = CursorLockMode.Confined;
+        canSpeak = false;
 
         string dialog;
 
         nameTmp.text = gameObject.name;
 
-        for (int i = 0; i < dialogueList.Length; i++)
+        for (int i = 0; i < dialogue.Length; i++)
         {
-            dialog = dialogueList[i];
+            dialog = dialogue[i];
 
             // Print dialogue
             for (int v = 0; v <= dialog.Length; v++)
@@ -77,13 +87,18 @@ public class NPC_Dia : Interaction
             yield return new WaitForSeconds(0.1f);
         }
 
-        gameObject.GetComponent<Cust_Timer>().StartTimer();
-        Cursor.lockState = CursorLockMode.Locked;
-
         textBox.gameObject.SetActive(false);
         tmp.gameObject.SetActive(false);
         nameTmp.gameObject.SetActive(false);
         player.freeze = false;
+        canSpeak = true;
+
+        if (!spoken)
+        {
+            spoken = true;
+            customerList.StartCoroutine(customerList.MoveToWaitPos());
+            gameObject.GetComponent<Cust_Timer>().StartTimer();
+        }
     }
 
 }

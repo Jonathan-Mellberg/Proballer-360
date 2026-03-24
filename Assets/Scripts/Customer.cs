@@ -15,26 +15,26 @@ public class Customer : MonoBehaviour
 
     // pool of orders
     [SerializeField] private string[] orders;
-    //[SerializeField] private BillboardAsset[] sprites = new BillboardAsset[3];
+    [SerializeField] Sprite normalSprite;
+    [SerializeField] Sprite angrySprite;
     [SerializeField] private int orderAmount = 2;
     [SerializeField] private int amountVariation = 1;
-    
+
+    private NPC_Dia Npc_Dia;    
     private ScoreV2 score;
     private CustomerListV2 customerList;
     private Cust_Timer custTimer;
-    private BillboardRenderer bill;
+    private SpriteRenderer spriteRenderer;
     private OrderReader orderReader;
     private bool angry;
-    private bool happy;
 
     public void GetVariables()
     {
         customerList = CustomerListV2.instance;
         score = customerList.gameObject.GetComponent<ScoreV2>();
         orderReader = score.orderReader;
-
-        bill = gameObject.GetComponent<BillboardRenderer>();
-        //bill.billboard = sprites[0];
+        TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer);
+        TryGetComponent<NPC_Dia>(out NPC_Dia Npc_Dia);
     }
 
     private void GenerateOrder()
@@ -43,9 +43,8 @@ public class Customer : MonoBehaviour
         List<string> orderList = new List<string>();
         string order;
         int amount = Random.Range(amountVariation * -1, amountVariation) + orderAmount;
-        int i = 0;
 
-        while (i < orderAmount)
+        for (int i = 0; i < orderAmount;)
         {
             order = orders[Random.Range(0, amount)];
             if (orderList.Contains(order))
@@ -65,17 +64,18 @@ public class Customer : MonoBehaviour
 
     public void CompleteOrder()
     {
-        //int customerScore = score.ratings[customerList.customerIndex].score;
-        int customerScore = Random.Range(0, 100);
+        int customerScore = score.ratings[customerList.customerIndex].score;
 
-        if (customerScore <= score.killThreshold) Kill();
-        if (customerScore <= score.angryThreshold) angry = true;
+        bool win = customerScore >= score.killThreshold;
 
-        Leave();
+        if (spriteRenderer != null) spriteRenderer.sprite = win ? normalSprite : angrySprite;
+        Npc_Dia.CompletionSpeech(win);
+        if (win) Leave(); else Kill();
     }
 
     private void Leave()
     {
+        customerList.customerActive = false;
         Destroy(custTimer);
         Destroy(gameObject);
     }

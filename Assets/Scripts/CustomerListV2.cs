@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Linq;
 
 public class CustomerListV2 : MonoBehaviour
 {
@@ -20,17 +19,17 @@ public class CustomerListV2 : MonoBehaviour
     public Image patienceBar;
 
     private GameObject customerObj;
+    private NPC_Dia Npc_Dia;
 
     [SerializeField] private Transform SpawnPos;
     [SerializeField] private Transform[] CounterPos;
-    [SerializeField] private Transform[] WaitPos;
-    [SerializeField] private Transform[] leavePos;
+    [SerializeField] private Transform WaitPos;
 
     [Header("Variables")]
     [SerializeField] private float waitTime = 10f;
     [SerializeField] private float customerSpeed = 1f;
 
-    private bool customerActive;
+    [HideInInspector] public bool customerActive;
     private bool spawning;
 
     // Singleton Class
@@ -49,7 +48,7 @@ public class CustomerListV2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!customerActive)
+        if (!customerActive && customerIndex < customers.Length)
         {
             StartCoroutine(CustomerSpawn());
         }
@@ -64,31 +63,39 @@ public class CustomerListV2 : MonoBehaviour
         customerScript.GetVariables();
 
         customerIndex++;
+        Npc_Dia = customerObj.GetComponent<NPC_Dia>();
     }
 
     private IEnumerator CustomerSpawn()
     {
         customerActive = true;
         yield return new WaitForSeconds(waitTime);
-
         InitializeCustomer();
+
+        Npc_Dia.canSpeak = false;
         // move customer to counter pos
-        foreach(Transform pos in CounterPos)
+        foreach (Transform pos in CounterPos)
         {
-            while (customerObj.transform.position != pos.position)
-            {
-                MoveCustomer(customerObj.transform, pos);
-                yield return null;
-            }
+            yield return StartCoroutine(MoveCustomer(customerObj.transform, pos));
         }
 
+        Npc_Dia.canSpeak = true;
     }
 
-    private void MoveCustomer(Transform customer, Transform endPoint)
+    public IEnumerator MoveToWaitPos()
     {
-        if (customer.position != endPoint.position)
+        Npc_Dia.canSpeak = false;
+        yield return StartCoroutine(MoveCustomer(customerObj.transform, WaitPos));
+        Npc_Dia.canSpeak = true;
+    }
+
+
+    private IEnumerator MoveCustomer(Transform customer, Transform endPoint)
+    {
+        while (customerObj.transform.position != endPoint.position)
         {
             customer.localPosition = Vector3.MoveTowards(customer.transform.localPosition, endPoint.position, customerSpeed * Time.deltaTime);
+            yield return null;
         }
     }
 }
