@@ -7,25 +7,25 @@ using UnityEngine.InputSystem.Android;
 
 public class menuManager : MonoBehaviour
 {
-    public GameObject panel;
+    public GameObject settings_Panel;
+    public GameObject level_Panel;
+
     public List<GameObject> menuButtons; // buttons on main menu
     //public List<GameObject> selectButtons; // buttons on panel
     public void MoveToScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }
-
     public void QuitGame()
     {
         Debug.Log("Quit Game!");
         Application.Quit();
     }
-
-    public void ShowPanel()
+    public void Show_settings(GameObject pannel)
     {
-        panel.SetActive(true);
+        settings_Panel.SetActive(true);
 
-        foreach(GameObject button in menuButtons)
+        foreach (GameObject button in menuButtons)
         {
             button.SetActive(false);
         }
@@ -37,9 +37,9 @@ public class menuManager : MonoBehaviour
         */
     }
 
-    public void HidePanel()
+    public void HidePanel(GameObject pannel)
     {
-        panel.SetActive(false);
+         pannel.SetActive(false);
 
         foreach (GameObject button in menuButtons)
         {
