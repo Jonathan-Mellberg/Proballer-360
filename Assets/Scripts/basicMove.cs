@@ -51,7 +51,7 @@ public class basicMove : MonoBehaviour
             Vector3 projected = Vector3.ProjectOnPlane(desiredVelocity, hit.normal);
             projected.y = rb.linearVelocity.y;
             rb.linearVelocity = projected;
-            Debug.Log(projected);
+            //Debug.Log(projected);
         }
         else
         {

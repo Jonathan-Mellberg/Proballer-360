@@ -33,6 +33,9 @@ public class coffeeMaking : Interaction
     private IEnumerator FillCup()
     {
         coffee.SetActive(true);
+        // match coffee color with coffee flow
+        if(coffee.GetComponent<MeshRenderer>().material != coffeeStream.GetComponent<MeshRenderer>().material)
+            coffee.GetComponent<MeshRenderer>().material = coffeeStream.GetComponent<MeshRenderer>().material;
 
         while (Input.GetKey(KeyCode.E))
         {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.VisualScripting;
+using Unity.Mathematics;
 
 public class InteractWithItem : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class InteractWithItem : MonoBehaviour
     private void Awake()
     {
         cam = GameObject.FindWithTag("MainCamera");
+        Cursor.visible = true;
     }
 
     void FixedUpdate()
@@ -58,6 +60,7 @@ public class InteractWithItem : MonoBehaviour
             if (Input.GetButtonDown("Interact") && obj.CompareTag(pickuppableTag) && canPickUpp)
             {
                 obj.transform.position = holdPoint.transform.position;
+                obj.transform.rotation = quaternion.identity;
                 obj.transform.SetParent(holdPoint.transform);
                 if (obj.TryGetComponent<Rigidbody>(out rig))
                 {
@@ -65,6 +68,7 @@ public class InteractWithItem : MonoBehaviour
                 }
                 holdingObj = true;
                 heldObj = obj.name;
+                Debug.Log(heldObj);
             }
             if (Input.GetButtonDown("DropHeld") && holdingObj)
             {
@@ -74,13 +78,26 @@ public class InteractWithItem : MonoBehaviour
                     rig.isKinematic = false;
                 }
                 holdingObj = false;
+                heldObj = null;
             }
             if (Input.GetButtonDown("Interact") && canInteract && !obj.IsUnityNull())
             {
                 if (holdingObj)
                 {
-
-                    interaction.Interact();
+                    switch (heldObj)
+                    {
+                        case ("cup_coffee"):
+                            if(hit.collider.gameObject.TryGetComponent<toppingJar>(out toppingJar topping))
+                            {
+                                Transform toppingPlace = GameObject.Find(heldObj).transform.Find("coffee").transform;
+                                GameObject topper = GameObject.Instantiate(topping.topping,toppingPlace,false);
+                                topper.transform.localPosition += new Vector3(0f, 0.2f, 0f);
+                                Debug.Log(topper.transform.localPosition);
+                                Debug.Log("topping added");
+                            }
+                            break;
+                        // add case for pie and cake
+                    }
                 }
                 if (obj.TryGetComponent(out interaction))
                     interaction.Interact();
