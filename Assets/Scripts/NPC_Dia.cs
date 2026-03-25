@@ -6,12 +6,21 @@ public class NPC_Dia : Interaction
 {
     [HideInInspector] public bool canSpeak;
 
+    [Header("Dialogue")]
     [SerializeField] private float timePerLetter = 0.1f;
-    [SerializeField] private string[] StartDialogue;
-    [SerializeField] private string[] RepeatDialogue;
-    [SerializeField] private string[] WinDialogue;
-    [SerializeField] private string[] LoseDialogue;
+    [SerializeField] private string[] startDialogue;
+    [SerializeField] private string[] repeatDialogue;
+    [SerializeField] private string[] winDialogue;
+    [SerializeField] private string[] dissapointDialogue;
+
+    [Header("Emotions")]
     [SerializeField] private string proceedButton;
+    [SerializeField] private string jumpSymbol;
+    [SerializeField] private string happyParticleSymbol;
+    [SerializeField] private string angryParticleSymbol;
+    [SerializeField] private GameObject happyParticles;
+    [SerializeField] private GameObject angryParticles;
+
     private basicMove player;
     private TextMeshProUGUI tmp;
     private TextMeshProUGUI nameTmp;
@@ -38,14 +47,18 @@ public class NPC_Dia : Interaction
         if (!canSpeak)
             return;
 
-        string[] dia = spoken ? RepeatDialogue : StartDialogue;
+        string[] dia = spoken ? repeatDialogue : startDialogue;
         StartCoroutine(Dialog(dia));
     }
 
-    public void CompletionSpeech(bool win)
+    public void CompletionSpeech()
     {
-        string[] dia = win ? WinDialogue : LoseDialogue;
-        StartCoroutine(Dialog(dia));
+        StartCoroutine(Dialog(winDialogue));
+    }
+
+    public void IncorrectSpeech()
+    {
+        StartCoroutine(Dialog(dissapointDialogue));
     }
 
     public System.Collections.IEnumerator Dialog(string[] dialogue)
@@ -63,6 +76,8 @@ public class NPC_Dia : Interaction
         for (int i = 0; i < dialogue.Length; i++)
         {
             dialog = dialogue[i];
+            //if (dialog.Contains("^"))
+                //dialog.Replace("^")
 
             // Print dialogue
             for (int v = 0; v <= dialog.Length; v++)

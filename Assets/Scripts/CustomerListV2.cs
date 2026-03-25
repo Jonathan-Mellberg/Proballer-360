@@ -7,8 +7,8 @@ public class CustomerListV2 : MonoBehaviour
 {
     public static CustomerListV2 instance { get; private set; }
 
-    public GameObject[] customers;
-    [HideInInspector] public int customerIndex = 0;
+    [SerializeField] private GameObject[] customers;
+    private int customerIndex = 0;
 
     [Header("References")]
     public GameObject player;
@@ -18,7 +18,7 @@ public class CustomerListV2 : MonoBehaviour
     public TextMeshProUGUI endTextPopup;
     public Image patienceBar;
 
-    private GameObject customerObj;
+    [HideInInspector] public GameObject customerObj;
     private NPC_Dia Npc_Dia;
 
     [SerializeField] private Transform SpawnPos;
