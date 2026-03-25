@@ -2089,16 +2089,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerListV2
   customers:
-  - {fileID: 3199713293772222320, guid: 203dcceaf9222a543ac68b3965f11f43, type: 3}
+  - {fileID: 3233365751748775433, guid: 46cf5e25859f194478f43c2da47f0465, type: 3}
   - {fileID: 3233365751748775433, guid: b8a11076adfc5cf47970cfada872502b, type: 3}
   - {fileID: 3233365751748775433, guid: a3df566636486764b846011074125880, type: 3}
-  customerIndex: 0
   player: {fileID: 702645283}
   textBox: {fileID: 1540810731}
   nameTextBox: {fileID: 204991495}
   dialogueTextBox: {fileID: 1325297755}
   endTextPopup: {fileID: 1420791835}
   patienceBar: {fileID: 1471958797}
+  customerObj: {fileID: 0}
   SpawnPos: {fileID: 1879760428}
   CounterPos:
   - {fileID: 1168031580}
@@ -2317,7 +2317,7 @@ Transform:
   m_GameObject: {fileID: 1879760427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 0.25, z: -0.3}
+  m_LocalPosition: {x: 3.3, y: 1, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
