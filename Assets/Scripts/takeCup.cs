@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class takeCup : MonoBehaviour
 {
-    public InteractWithItem interact;
+    public InteractWithItem interact; // form player
 
-    public Transform coffeeplace;
+    public Transform coffeeplace; //empty gameobject to move cuo to
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
