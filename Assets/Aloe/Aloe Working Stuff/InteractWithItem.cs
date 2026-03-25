@@ -70,6 +70,7 @@ public class InteractWithItem : MonoBehaviour
                 heldObj = obj.name;
                 Debug.Log(heldObj);
             }
+
             if (Input.GetButtonDown("DropHeld") && holdingObj)
             {
                 obj.transform.SetParent(null);
@@ -80,6 +81,7 @@ public class InteractWithItem : MonoBehaviour
                 holdingObj = false;
                 heldObj = null;
             }
+
             if (Input.GetButtonDown("Interact") && canInteract && !obj.IsUnityNull())
             {
                 if (holdingObj)
