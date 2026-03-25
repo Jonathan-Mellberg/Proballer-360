@@ -5,7 +5,7 @@ using UnityEngine;
 public class OrderReader : Interaction
 {
     [SerializeField] private BoxCollider platterHitbox;
-    [SerializeField] private ScoreV2 score;
+    [SerializeField] private CustomerListV2 customerList;
     private string[] orders;
     [SerializeField] private int penalty = 20;
 
@@ -28,15 +28,17 @@ public class OrderReader : Interaction
 
     public override void Interact()
     {
-        TurnInOrder();
+        
     }
 
     private void TurnInOrder()
     {
+        if (ReadPlatter() == true)
+            customerList.customerObj.GetComponent<Customer>().CompleteOrder();
 
     }
 
-    private void ReadPlatter()
+    private bool ReadPlatter()
     {
         // Find all objects in platter hitbox
         List<string> items = new List<string>();
@@ -61,8 +63,8 @@ public class OrderReader : Interaction
 
         if (incorrectItem)
         {
-            score.DecreaseScore(penalty);
-            // say thing
+            customerList.customerObj.GetComponent<NPC_Dia>().IncorrectSpeech();
         }
+        return incorrectItem;
     }
 }
