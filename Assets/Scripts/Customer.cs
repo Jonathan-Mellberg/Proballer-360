@@ -21,13 +21,16 @@ public class Customer : MonoBehaviour
     public void GetVariables()
     {
         customerList = CustomerListV2.instance;
+        Npc_Dia = transform.GetComponent<NPC_Dia>();
+        GenerateOrder();
     }
 
     private void GenerateOrder()
     {
+        /*
         // generate order
         List<string> orderList = new List<string>();
-        string order;
+        string order = "a";
         int amount = Random.Range(amountVariation * -1, amountVariation) + orderAmount;
 
         for (int i = 0; i < orderAmount;)
@@ -41,6 +44,30 @@ public class Customer : MonoBehaviour
         }
 
         orderReader.UpdateOrder(orderList.ToArray());
+        Npc_Dia.order = order;
+        */
+
+        List<string> orderList = new List<string>();
+        string verbalOrder = "";
+        string order;
+
+        for (int i = 0; i < orderAmount;)
+        {
+            order = orders[Random.Range(0, orders.Length)];
+
+            if (orderList.Contains(order))
+                return;
+
+            orderList.Add(order);
+            verbalOrder = verbalOrder + ", " + order;
+
+            if (verbalOrder.StartsWith(", "))
+                verbalOrder = verbalOrder.Remove(0, 2);
+
+            i++;
+        }
+        //orderReader.UpdateOrder(orderList.ToArray());
+        Npc_Dia.order = verbalOrder;
     }
     
     private void Update()
@@ -58,7 +85,7 @@ public class Customer : MonoBehaviour
     private void Leave()
     {
         customerList.customerActive = false;
-        Instantiate(leaveParticles, transform);
+        if (leaveParticles != null) Instantiate(leaveParticles, transform);
         Destroy(custTimer);
         Destroy(gameObject);
     }

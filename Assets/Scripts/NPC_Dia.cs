@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class NPC_Dia : Interaction
 {
     [HideInInspector] public bool canSpeak;
+    [HideInInspector] public string order;
 
     [Header("Dialogue")]
     [SerializeField] private float timePerLetter = 0.1f;
@@ -15,9 +16,6 @@ public class NPC_Dia : Interaction
 
     [Header("Emotions")]
     [SerializeField] private string proceedButton;
-    [SerializeField] private string jumpSymbol;
-    [SerializeField] private string happyParticleSymbol;
-    [SerializeField] private string angryParticleSymbol;
     [SerializeField] private GameObject happyParticles;
     [SerializeField] private GameObject angryParticles;
 
@@ -43,7 +41,6 @@ public class NPC_Dia : Interaction
 
     public override void Interact()
     {
-        Debug.Log(canSpeak);
         if (!canSpeak)
             return;
 
@@ -76,8 +73,22 @@ public class NPC_Dia : Interaction
         for (int i = 0; i < dialogue.Length; i++)
         {
             dialog = dialogue[i];
-            //if (dialog.Contains("^"))
-                //dialog.Replace("^")
+
+            // React on action symbols
+            if (dialog.Contains("*"))
+            {
+                dialog = dialog.Replace("*", order);
+            }
+            else if (dialog.Contains("^"))
+            {
+                dialog = dialog.Replace("^", "");
+                Instantiate(happyParticles);
+            }
+            else if (dialog.Contains("|"))
+            {
+                dialog = dialog.Replace("|", "");
+                Instantiate(angryParticles);
+            }
 
             // Print dialogue
             for (int v = 0; v <= dialog.Length; v++)

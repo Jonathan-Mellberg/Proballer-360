@@ -10,12 +10,11 @@ public class InteractWithItem : MonoBehaviour
     [SerializeField] private GameObject holdPoint;
     [SerializeField] private Rigidbody rig;
 
-    // propetys 
+
     Interaction interaction;
     private string heldObj;
     private GameObject cam;
     private GameObject obj;
-    private BillboardRenderer bill;
     private GameObject billObject;
     private bool canInteract = false;
     private bool canPickUpp = false;
@@ -42,18 +41,6 @@ public class InteractWithItem : MonoBehaviour
             }
             else if (obj.CompareTag(pickuppableTag))
             {
-                bill = obj.GetComponentInChildren<BillboardRenderer>();
-
-                if (bill != null)
-                {
-                    bill.gameObject.SetActive(true);
-                    billObject = bill.gameObject;
-                }
-                if (bill == null && billObject != null)
-                {
-                    bill.gameObject.SetActive(false);
-                    billObject = null;
-                }
                 canPickUpp = obj.CompareTag(pickuppableTag);
             }
 
