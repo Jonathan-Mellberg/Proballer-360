@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interacteable
-  - Pickuppable
   - PickUppable
+  - Fried
   layers:
   - Default
   - TransparentFX

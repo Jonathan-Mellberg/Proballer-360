@@ -72,7 +72,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0dc8b24c5279440b4b87d50ae6e666, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7496636183682045731}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0dc8b24c5279440b4b87d50ae6e666, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2746046382826925733}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0dc8b24c5279440b4b87d50ae6e666, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5936199540998200655}
   m_SourcePrefab: {fileID: 100100000, guid: 3f0dc8b24c5279440b4b87d50ae6e666, type: 3}
+--- !u!4 &2166345524371404991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4518980002003577502, guid: 3f0dc8b24c5279440b4b87d50ae6e666, type: 3}
+  m_PrefabInstance: {fileID: 2352782914400178721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3199713293772222320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f0dc8b24c5279440b4b87d50ae6e666, type: 3}
@@ -97,8 +108,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &4328820563916374619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +162,38 @@ MonoBehaviour:
   WinDialogue: []
   LoseDialogue: []
   proceedButton: 
+--- !u!95 &2746046382826925733
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199713293772222320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 51b0eaf6dc2e614478c2c3e8aec5bb59, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5936199540998200655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199713293772222320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a2c41c5bc9bbe49b4fe4b734d5e950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtPlayer
+  eye: {fileID: 2166345524371404991}

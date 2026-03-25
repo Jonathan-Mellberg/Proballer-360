@@ -1,27 +1,17 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Linq;
-using NUnit.Framework;
 
 public class Customer : MonoBehaviour
 {
-    // button to complete order
-    // randomize score
-    // on complete order, kill current customer and move onward to next customer
-    // next customer lerps forward to point
-    // at end of day, get final score, debug log list of customer
-
-    // pool of orders
     [SerializeField] private string[] orders;
     [SerializeField] Sprite normalSprite;
     [SerializeField] Sprite angrySprite;
     [SerializeField] private int orderAmount = 2;
     [SerializeField] private int amountVariation = 1;
+    [SerializeField] private GameObject leaveParticles;
 
-    private NPC_Dia Npc_Dia;    
-    private ScoreV2 score;
+    private NPC_Dia Npc_Dia;
     private CustomerListV2 customerList;
     private Cust_Timer custTimer;
     private SpriteRenderer spriteRenderer;
@@ -31,17 +21,16 @@ public class Customer : MonoBehaviour
     public void GetVariables()
     {
         customerList = CustomerListV2.instance;
-        score = customerList.gameObject.GetComponent<ScoreV2>();
-        orderReader = score.orderReader;
-        TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer);
-        TryGetComponent<NPC_Dia>(out NPC_Dia Npc_Dia);
+        Npc_Dia = transform.GetComponent<NPC_Dia>();
+        GenerateOrder();
     }
 
     private void GenerateOrder()
     {
+        /*
         // generate order
         List<string> orderList = new List<string>();
-        string order;
+        string order = "a";
         int amount = Random.Range(amountVariation * -1, amountVariation) + orderAmount;
 
         for (int i = 0; i < orderAmount;)
@@ -55,8 +44,32 @@ public class Customer : MonoBehaviour
         }
 
         orderReader.UpdateOrder(orderList.ToArray());
-    }
+        Npc_Dia.order = order;
+        */
 
+        List<string> orderList = new List<string>();
+        string verbalOrder = "";
+        string order;
+
+        for (int i = 0; i < orderAmount;)
+        {
+            order = orders[Random.Range(0, orders.Length)];
+
+            if (orderList.Contains(order))
+                return;
+
+            orderList.Add(order);
+            verbalOrder = verbalOrder + ", " + order;
+
+            if (verbalOrder.StartsWith(", "))
+                verbalOrder = verbalOrder.Remove(0, 2);
+
+            i++;
+        }
+        //orderReader.UpdateOrder(orderList.ToArray());
+        Npc_Dia.order = verbalOrder;
+    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) CompleteOrder();
@@ -64,18 +77,15 @@ public class Customer : MonoBehaviour
 
     public void CompleteOrder()
     {
-        int customerScore = score.ratings[customerList.customerIndex].score;
-
-        bool win = customerScore >= score.killThreshold;
-
-        if (spriteRenderer != null) spriteRenderer.sprite = win ? normalSprite : angrySprite;
-        Npc_Dia.CompletionSpeech(win);
-        if (win) Leave(); else Kill();
+        if (spriteRenderer != null) spriteRenderer.sprite = normalSprite;
+        Npc_Dia.CompletionSpeech();
+        Leave();
     }
 
     private void Leave()
     {
         customerList.customerActive = false;
+        if (leaveParticles != null) Instantiate(leaveParticles, transform);
         Destroy(custTimer);
         Destroy(gameObject);
     }
@@ -94,17 +104,4 @@ public class Customer : MonoBehaviour
 
         transform.position = targetPos.position;
     }
-
-    private void Kill()
-    {
-        Debug.Log("You die rawwwwr");
-    }
-
-    // give order, take order
-
-    // says order in speech scripts
-
-    // function to generate an order
-
-    // send order to platter script
 }

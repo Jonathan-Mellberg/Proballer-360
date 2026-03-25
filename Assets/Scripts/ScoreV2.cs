@@ -1,3 +1,4 @@
+/*
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,3 +34,4 @@ public class ScoreV2 : MonoBehaviour
         return Mathf.RoundToInt(scoreSum / ratings.Count);
     }
 }
+*/

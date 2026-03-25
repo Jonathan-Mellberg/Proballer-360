@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.4382975
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.0308199
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.594059
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,43 +62,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9180290770323516343}
+      addedObject: {fileID: 7226708493039311757}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7226708493039311757}
+      addedObject: {fileID: 572984554201230302}
   m_SourcePrefab: {fileID: 100100000, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
 --- !u!1 &4416948974129806242 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 52b7a1e47896a3c479c289d0b0c83832, type: 3}
   m_PrefabInstance: {fileID: 3570596259268216563}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &9180290770323516343
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416948974129806242}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &7226708493039311757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,5 +91,18 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2.274476, z: 2}
-  m_Center: {x: 0, y: 1.1143904, z: 0}
+  m_Size: {x: 0.37105548, y: 0.45337665, z: 0.3436942}
+  m_Center: {x: 0.0034393668, y: 0.20384067, z: -0.0018322468}
+--- !u!114 &572984554201230302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416948974129806242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b49e64f3f538440a76b76a25e58bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::toppingJar
+  topping: {fileID: 5577437508213583705, guid: e2a096be3b8ee394896769968338b8c4, type: 3}
