@@ -8,6 +8,7 @@ public class NPC_Dia : Interaction
     [HideInInspector] public string order;
 
     [Header("Dialogue")]
+    [SerializeField] private Image icon;
     [SerializeField] private float timePerLetter = 0.1f;
     [SerializeField] private string[] startDialogue;
     [SerializeField] private string[] repeatDialogue;
@@ -22,9 +23,11 @@ public class NPC_Dia : Interaction
     private basicMove player;
     private TextMeshProUGUI tmp;
     private TextMeshProUGUI nameTmp;
+    private TextMeshProUGUI postIt;
     private CustomerListV2 customerList;
     private TextMeshProUGUI endText;
     private Image textBox;
+    private RectTransform iconOriginPoint;
     private bool spoken;
 
     private void Awake()
@@ -32,7 +35,9 @@ public class NPC_Dia : Interaction
         customerList = CustomerListV2.instance;
         tmp = customerList.dialogueTextBox;
         nameTmp = customerList.nameTextBox;
+        postIt = customerList.postIt;
         textBox = customerList.textBox;
+        iconOriginPoint = customerList.iconOriginPoint;
         endText = customerList.endTextPopup;
 
         if (customerList.player != null)
@@ -61,6 +66,9 @@ public class NPC_Dia : Interaction
     public System.Collections.IEnumerator Dialog(string[] dialogue)
     {
         gameObject.GetComponent<Customer>().GenerateOrder();
+
+        if (postIt != null) postIt.text = order;
+
         textBox.gameObject.SetActive(true);
         tmp.gameObject.SetActive(true);
         nameTmp.gameObject.SetActive(true);
