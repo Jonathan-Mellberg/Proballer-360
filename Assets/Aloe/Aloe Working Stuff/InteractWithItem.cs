@@ -9,9 +9,9 @@ public class InteractWithItem : MonoBehaviour
     [SerializeField] private string pickuppableTag = "PickUppable";
     [SerializeField] private string stationTag = "PickUppableStation";
     [SerializeField] private GameObject holdPoint;
-    [SerializeField] private Rigidbody rig;
 
-
+    private Rigidbody rig;
+    private Collider collider;
     Interaction interaction;
     private string heldObj;
     private GameObject cam;
@@ -36,7 +36,7 @@ public class InteractWithItem : MonoBehaviour
 
         if (!holdingObj && holdPoint.transform.childCount > 0)
         {
-            holdPoint.transform.DetachChildren();
+            holdPoint.transform.DetachChildren();   
         }
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, interactRadius))
         {
@@ -60,6 +60,12 @@ public class InteractWithItem : MonoBehaviour
                 obj.transform.position = holdPoint.transform.position;
                 obj.transform.rotation = quaternion.identity;
                 obj.transform.SetParent(holdPoint.transform);
+
+                if (obj.TryGetComponent<Collider>(out collider))
+                {
+                    collider.enabled = false;
+                }
+                
                 if (obj.TryGetComponent<Rigidbody>(out rig))
                 {
                     rig.isKinematic = true;
@@ -72,6 +78,11 @@ public class InteractWithItem : MonoBehaviour
             if (Input.GetButtonDown("DropHeld") && holdingObj)
             {
                 obj.transform.SetParent(null);
+                if (!collider == null)
+                {
+                    collider.enabled = true;
+                    Debug.Log("colider");
+                }
                 if (rig.isKinematic)
                 {
                     rig.isKinematic = false;
