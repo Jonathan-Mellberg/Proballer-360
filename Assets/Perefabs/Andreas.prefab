@@ -70,9 +70,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ca4941508c1404fad75fbf5069b288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
-  orders: []
+  orders:
+  - {fileID: 5807247969971442802, guid: b95dd91fbfeb5e8409b63db920a951c7, type: 3}
+  - {fileID: 5807247969971442802, guid: b95dd91fbfeb5e8409b63db920a951c7, type: 3}
+  normalSprite: {fileID: 0}
+  angrySprite: {fileID: 0}
   orderAmount: 2
-  amountVariation: 1
+  leaveParticles: {fileID: 0}
 --- !u!114 &-6949223085623505724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,12 +103,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522efe5b5e94b394b81e36ad56697e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
+  canSpeak: 0
+  order: 
   timePerLetter: 0.05
-  dialogueList:
-  - "hi\u2026"
-  - ...coffee please.
-  - friend?
+  startDialogue: []
+  repeatDialogue: []
+  winDialogue: []
+  dissapointDialogue: []
   proceedButton: 
+  happyParticles: {fileID: 0}
+  angryParticles: {fileID: 0}
 --- !u!212 &4890264550063310449
 SpriteRenderer:
   m_ObjectHideFlags: 0

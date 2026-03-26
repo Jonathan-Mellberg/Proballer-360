@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 71421137f0a7e124497c27080899c410, type: 3}
       propertyPath: m_Name
-      value: cup_coffee
+      value: coffee_cup
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 71421137f0a7e124497c27080899c410, type: 3}
       propertyPath: m_TagString
@@ -106,10 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01d8259c6027066498a4785b0a6ef33c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8449242956162896283, guid: 71421137f0a7e124497c27080899c410, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7039238634660832869}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71421137f0a7e124497c27080899c410, type: 3}
       insertIndex: -1
@@ -171,70 +168,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.21323788, y: 0.30446756, z: 0.2238617}
   m_Center: {x: -0.000731647, y: 0.15264958, z: -0.00027275085}
---- !u!4 &6262350799519401798 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8449242956162896283, guid: 71421137f0a7e124497c27080899c410, type: 3}
-  m_PrefabInstance: {fileID: 6653528122434824483}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7366445620893532558
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 6262350799519401798}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2051
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-      propertyPath: m_Name
-      value: Ice_SugarCubes
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
---- !u!4 &7039238634660832869 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 488646f659dbc34448bf0c22fc493d3a, type: 3}
-  m_PrefabInstance: {fileID: 7366445620893532558}
-  m_PrefabAsset: {fileID: 0}

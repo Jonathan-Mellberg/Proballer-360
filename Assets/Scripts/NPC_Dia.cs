@@ -60,6 +60,7 @@ public class NPC_Dia : Interaction
 
     public System.Collections.IEnumerator Dialog(string[] dialogue)
     {
+        gameObject.GetComponent<Customer>().GenerateOrder();
         textBox.gameObject.SetActive(true);
         tmp.gameObject.SetActive(true);
         nameTmp.gameObject.SetActive(true);

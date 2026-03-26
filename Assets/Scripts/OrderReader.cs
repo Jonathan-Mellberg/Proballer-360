@@ -1,63 +1,69 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class OrderReader : Interaction
 {
-    [SerializeField] private BoxCollider platterHitbox;
+    [SerializeField] private Transform platterHitbox;
     [SerializeField] private CustomerListV2 customerList;
-    private string[] orders;
-    [SerializeField] private int penalty = 20;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateOrder(string[] orderList)
-    {
-        orders = orderList;
-    }
+    private GameObject[] orders;
 
     public override void Interact()
     {
-        
-    }
+        if (orders == null)
+            return;
 
-    private void TurnInOrder()
-    {
         if (ReadPlatter() == true)
             customerList.customerObj.GetComponent<Customer>().CompleteOrder();
+    }
 
+    public void UpdateOrder(GameObject[] newOrder)
+    {
+        orders = newOrder;
     }
 
     private bool ReadPlatter()
     {
         // Find all objects in platter hitbox
-        List<string> items = new List<string>();
-        Transform p = platterHitbox.transform;
-        Collider[] colliders = Physics.OverlapBox(p.position, p.localScale / 2, Quaternion.identity);
+        List<GameObject> items = new List<GameObject>();
+        Collider[] colliders = Physics.OverlapBox(platterHitbox.position, platterHitbox.localScale / 2, Quaternion.identity);
+        GameObject coffeeOrder = null;
 
-        // Convert collider list to string list
+        // Convert collider list to gameObject list
         foreach (Collider collider in colliders) 
-        { 
-            items.Add(collider.gameObject.name); 
+        {
+            if (collider.gameObject.CompareTag("PickUppable"))
+                items.Add(collider.gameObject);
         }
+
+        // Identify coffee object
+        foreach (GameObject order in orders)
+        {
+            if (order.transform.Find("coffee"))
+                coffeeOrder = order.transform.Find("coffee").gameObject;
+        }
+
 
         // Check for incorrect items
         bool incorrectItem = false;
-        foreach (string item in items)
+        foreach (GameObject item in items)
         {
-            if (!orders.Contains(item))
+            if (!orders.ToString().Contains(item.name))
             {
                 incorrectItem = true;
+            }
+
+            if (item == coffeeOrder)
+            {
+                GameObject coffee = item.transform.Find("coffee").gameObject;
+
+                Debug.Log(coffee.transform.localScale.y);
+
+                if (coffee.GetComponent<MeshRenderer>().material != coffeeOrder.GetComponent<MeshRenderer>().material
+                    || coffee.transform.localScale.y < 0.75
+                    || coffee.transform.GetChild(0).name == coffeeOrder.transform.GetChild(0).name)
+                {
+                    incorrectItem = true;
+                }
             }
         }
 
@@ -65,6 +71,13 @@ public class OrderReader : Interaction
         {
             customerList.customerObj.GetComponent<NPC_Dia>().IncorrectSpeech();
         }
+
+        foreach(GameObject item in items)
+        {
+            if (item.CompareTag("PickUppable"))
+                Destroy(item);
+        }
+
         return incorrectItem;
     }
 }
