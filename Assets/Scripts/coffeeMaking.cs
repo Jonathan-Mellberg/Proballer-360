@@ -3,22 +3,18 @@ using UnityEngine;
 
 public class coffeeMaking : Interaction
 {
-    public GameObject coffeeStream; // set as not activ and match its material to what the machine 
-
-    public GameObject coffee; // gets set by takecup
-
-    public float growSpeed = 0.5f; // speed of interpolation
-
-    float fillAmount = 0f; // 0 → 1
-
-    Vector3 minScale = new Vector3(0.73f, 0.01f, 0.73f); // makes sure the coffee doesnt clip through the cup
-    Vector3 maxScale = Vector3.one;
-
+    [HideInInspector] public GameObject coffee = null; // gets set by takecup
     [HideInInspector] public bool canFill = false;
+
+    [SerializeField] private GameObject coffeeStream; // set as not activ and match its material to what the machine 
+    [SerializeField] private float growSpeed = 0.5f; // speed of interpolation
+    private float fillAmount = 0f; // 0 → 1
+
+    private Vector3 minScale = new Vector3(0.73f, 0.01f, 0.73f); // makes sure the coffee doesnt clip through the cup
+    private Vector3 maxScale = Vector3.one;
 
     void Start()
     {
-        coffee.transform.localScale = minScale;
         coffeeStream.SetActive(false);
     }
 
@@ -43,6 +39,7 @@ public class coffeeMaking : Interaction
             if (fillAmount >= 1f)
             {
                 coffeeStream.SetActive(false);
+                coffee.transform.parent.Find("lid").gameObject.SetActive(true);
             }
             else
             {
