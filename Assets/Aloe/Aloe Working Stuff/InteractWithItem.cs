@@ -7,6 +7,7 @@ public class InteractWithItem : MonoBehaviour
     [SerializeField] private float interactRadius = 3f;
     [SerializeField] private string interacteableTag = "Interacteable";
     [SerializeField] private string pickuppableTag = "PickUppable";
+    [SerializeField] private string stationTag = "PickUppableStation";
     [SerializeField] private GameObject holdPoint;
     [SerializeField] private Rigidbody rig;
 
@@ -32,6 +33,11 @@ public class InteractWithItem : MonoBehaviour
     {
         canInteract = false;
         canPickUpp = false;
+
+        if (!holdingObj && holdPoint.transform.childCount > 0)
+        {
+            holdPoint.transform.DetachChildren();
+        }
         if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, interactRadius))
         {
             obj = hit.collider.gameObject;
@@ -39,13 +45,18 @@ public class InteractWithItem : MonoBehaviour
             {
                 canInteract = obj.CompareTag(interacteableTag);
             }
-            else if (obj.CompareTag(pickuppableTag))
+            else if (obj.CompareTag(pickuppableTag) || obj.CompareTag(stationTag))
             {
-                canPickUpp = obj.CompareTag(pickuppableTag);
+                canPickUpp = obj.CompareTag(pickuppableTag) || obj.CompareTag(stationTag);
             }
 
-            if (Input.GetButtonDown("Interact") && obj.CompareTag(pickuppableTag) && canPickUpp)
+            if (Input.GetButtonDown("Interact") && obj.CompareTag(pickuppableTag) && canPickUpp && !holdingObj || Input.GetButtonDown("Interact") && obj.CompareTag(stationTag) && canPickUpp && !holdingObj)
             {
+                if (obj.CompareTag(stationTag))
+                {
+                    GameObject thinginbox = obj.GetComponent<whatInBox>().thingInBox;
+                    obj = GameObject.Instantiate(thinginbox);
+                }
                 obj.transform.position = holdPoint.transform.position;
                 obj.transform.rotation = quaternion.identity;
                 obj.transform.SetParent(holdPoint.transform);
