@@ -7,13 +7,14 @@ using Unity.VisualScripting;
 public class CustomerListV2 : MonoBehaviour
 {
     public static CustomerListV2 instance { get; private set; }
-
     [SerializeField] private GameObject[] customers;
     private int customerIndex = 0;
 
     [Header("References")]
     public GameObject player;
     public Image textBox;
+    public RectTransform iconOriginPoint;
+    public TextMeshProUGUI postIt;
     public TextMeshProUGUI nameTextBox;
     public TextMeshProUGUI dialogueTextBox;
     public TextMeshProUGUI endTextPopup;
