@@ -78,7 +78,7 @@ public class InteractWithItem : MonoBehaviour
             if (Input.GetButtonDown("DropHeld") && holdingObj)
             {
                 obj.transform.SetParent(null);
-                if (!collider == null)
+                if (collider != null)
                 {
                     collider.enabled = true;
                     Debug.Log("colider");

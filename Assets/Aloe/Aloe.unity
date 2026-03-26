@@ -7568,6 +7568,8 @@ GameObject:
   - component: {fileID: 4410525987702819632}
   - component: {fileID: 5416756085857913631}
   - component: {fileID: 5416756085857913632}
+  - component: {fileID: 5416756085857913633}
+  - component: {fileID: 5416756085857913634}
   m_Layer: 0
   m_Name: pCube42
   m_TagString: Untagged
@@ -14808,6 +14810,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.26, y: 0.4873832, z: 0.25}
   m_Center: {x: 0.00000008940697, y: -0.000000022351742, z: -0.000000029802322}
+--- !u!114 &5416756085857913633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184102407152561801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd04634cc8141d4ab4d0b3e5d637347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!64 &5416756085857913634
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184102407152561801}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4105602893859884100, guid: 81117de05f2b99240b213fe8c3ed7833, type: 3}
 --- !u!4 &5433019564860580189
 Transform:
   m_ObjectHideFlags: 0
@@ -21282,71 +21318,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &8912258425042286541
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 32.0603
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.978
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.887
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 340313249587982413, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149220223807433463, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_Name
-      value: IceSugarCubes
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149220223807433463, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_TagString
-      value: PickUppable
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164775632852155064, guid: 5b6544d891747934c9505ca033209498, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5b6544d891747934c9505ca033209498, type: 3}
 --- !u!4 &8925910726228374999
 Transform:
   m_ObjectHideFlags: 0
@@ -22117,5 +22088,4 @@ SceneRoots:
   - {fileID: 543450652560383324}
   - {fileID: 2046630782}
   - {fileID: 1749469774}
-  - {fileID: 8912258425042286541}
   - {fileID: 3372084491144661549}
