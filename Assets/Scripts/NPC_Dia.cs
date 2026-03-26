@@ -40,6 +40,9 @@ public class NPC_Dia : Interaction
         iconOriginPoint = customerList.iconOriginPoint;
         endText = customerList.endTextPopup;
 
+        Instantiate(icon, iconOriginPoint);
+        icon.enabled = false;
+
         if (customerList.player != null)
             player = customerList.player.GetComponent<basicMove>();
     }
@@ -72,6 +75,7 @@ public class NPC_Dia : Interaction
         textBox.gameObject.SetActive(true);
         tmp.gameObject.SetActive(true);
         nameTmp.gameObject.SetActive(true);
+        icon.enabled = true;
         player.freeze = true;
         canSpeak = false;
 
@@ -125,6 +129,7 @@ public class NPC_Dia : Interaction
         textBox.gameObject.SetActive(false);
         tmp.gameObject.SetActive(false);
         nameTmp.gameObject.SetActive(false);
+        icon.enabled = false;
         player.freeze = false;
         canSpeak = true;
 
