@@ -8,7 +8,7 @@ public class NPC_Dia : Interaction
     [HideInInspector] public string order;
 
     [Header("Dialogue")]
-    [SerializeField] private Image icon;
+    [SerializeField] private GameObject icon;
     [SerializeField] private float timePerLetter = 0.1f;
     [SerializeField] private string[] startDialogue;
     [SerializeField] private string[] repeatDialogue;
@@ -41,7 +41,7 @@ public class NPC_Dia : Interaction
         endText = customerList.endTextPopup;
 
         Instantiate(icon, iconOriginPoint);
-        icon.enabled = false;
+        icon.SetActive(false);
 
         if (customerList.player != null)
             player = customerList.player.GetComponent<basicMove>();
@@ -75,7 +75,7 @@ public class NPC_Dia : Interaction
         textBox.gameObject.SetActive(true);
         tmp.gameObject.SetActive(true);
         nameTmp.gameObject.SetActive(true);
-        icon.enabled = true;
+        icon.SetActive(true);
         player.freeze = true;
         canSpeak = false;
 
@@ -109,7 +109,7 @@ public class NPC_Dia : Interaction
                 tmp.text = dialog[..v];
                 yield return new WaitForSeconds(timePerLetter);
 
-                if (Input.GetKey(KeyCode.B))
+                if (Input.GetKey(KeyCode.Space))
                 {
                     tmp.text = dialog;
                     yield return new WaitForSeconds(0.1f);
@@ -119,7 +119,7 @@ public class NPC_Dia : Interaction
 
             endText.gameObject.SetActive(true);
 
-            while (!Input.GetKeyDown(KeyCode.B))
+            while (!Input.GetKeyDown(KeyCode.Space))
                 yield return null;
 
             endText.gameObject.SetActive(false);
@@ -129,7 +129,7 @@ public class NPC_Dia : Interaction
         textBox.gameObject.SetActive(false);
         tmp.gameObject.SetActive(false);
         nameTmp.gameObject.SetActive(false);
-        icon.enabled = false;
+        icon.SetActive(false);
         player.freeze = false;
         canSpeak = true;
 

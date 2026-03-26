@@ -9,31 +9,39 @@ public class Cust_Timer : MonoBehaviour
     [SerializeField] Color calmColour;
     [SerializeField] Color angryColour;
     private Image bar;
-    private float elapsedTime;
+    private bool angry;
+    private Coroutine coroutine;
+    private Coroutine barProgressCoroutine;
 
     public void StartTimer()
     {
-        elapsedTime = time;
         bar = transform.parent.GetComponent<CustomerListV2>().patienceBar;
         bar.gameObject.SetActive(true);
         bar.color = calmColour;
-        StartCoroutine(TimeMeterDrain());
+        coroutine = StartCoroutine(TimeMeterDrain(time));
     }
 
     private void FixedUpdate()
     {
-        if (bar.enabled && bar.fillAmount < 0.5 && bar.color == calmColour)
-            bar.color = angryColour;
+        if (bar == null)
+            return;
+
+        else if (!angry && bar.fillAmount < 0.5)
+            BecomeAngry();
+
+        else if (bar.fillAmount < 0.01f)
+            Kill();
+
     }
-    private IEnumerator TimeMeterDrain()
+    private IEnumerator TimeMeterDrain(float time)
     {
-        yield return StartCoroutine(BarProgression.Progress(bar, false, elapsedTime));
+        yield return barProgressCoroutine = StartCoroutine(BarProgression.Progress(bar, false, time, bar.fillAmount));
         StopTimer();
     }
 
     public void StopTimer()
     {
-        StopCoroutine(TimeMeterDrain());
+        StopCoroutine(coroutine);
         bar.gameObject.SetActive(false);
         bar.fillAmount = 1f;
         Destroy(this);
@@ -41,9 +49,16 @@ public class Cust_Timer : MonoBehaviour
 
     public void BecomeAngry()
     {
-        StopCoroutine(TimeMeterDrain());
+        angry = true;
+        StopCoroutine(coroutine);
+        StopCoroutine(barProgressCoroutine);
+        bar.color = angryColour;
+        coroutine = StartCoroutine(TimeMeterDrain(bar.fillAmount * time / angerFactor));
+    }
 
-        elapsedTime = bar.fillAmount * time * 1 / angerFactor;
-        StartCoroutine(TimeMeterDrain());
+    private void Kill()
+    {
+        Death deathScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Death>();
+        deathScript.StartCoroutine(deathScript.Die());
     }
 }

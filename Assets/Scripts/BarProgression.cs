@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 static class BarProgression
 {
-    public static IEnumerator Progress(Image bar, bool fill, float progressTime)
+    public static IEnumerator Progress(Image bar, bool fill, float progressTime, float startValue = -1)
     {
-        int startFill = fill ? 0 : 1;
+        float startFill = fill ? 0 : 1;
         int endFill = fill ? 1 : 0;
         bar.fillAmount = startFill;
+
+        if (startValue != -1) startFill = startValue;
 
         float time = 0f;
         while (time < progressTime)

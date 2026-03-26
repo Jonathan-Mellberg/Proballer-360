@@ -68,8 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f5b9f99722d3946aad89d314ebdf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cust_Timer
-  time: 120
+  time: 20
   angerFactor: 2
+  calmColour: {r: 0.16407563, g: 0.4118609, b: 0.8553459, a: 1}
+  angryColour: {r: 0.64779866, g: 0.1813021, b: 0.1813021, a: 1}
 --- !u!114 &-6526453141999655396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
   canSpeak: 0
   order: 
+  icon: {fileID: 737654993641311794, guid: 8166cf27ded86c14fbc541b1b63badb2, type: 3}
   timePerLetter: 0.05
   startDialogue:
   - skibidi toilet

@@ -15,7 +15,6 @@ public class Customer : MonoBehaviour
     private Cust_Timer custTimer;
     private SpriteRenderer spriteRenderer;
     private OrderReader orderReader;
-    private bool angry;
 
     public void GetVariables()
     {
@@ -52,6 +51,7 @@ public class Customer : MonoBehaviour
     public void CompleteOrder()
     {
         if (spriteRenderer != null) spriteRenderer.sprite = normalSprite;
+        custTimer.StopTimer();
         Npc_Dia.CompletionSpeech();
         orderReader.UpdateOrder(null);
         Leave();
