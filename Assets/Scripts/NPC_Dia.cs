@@ -9,6 +9,7 @@ public class NPC_Dia : Interaction
 
     [Header("Dialogue")]
     [SerializeField] private GameObject icon;
+    [SerializeField] private AudioClip speechSound;
     [SerializeField] private float timePerLetter = 0.1f;
     [SerializeField] private string[] startDialogue;
     [SerializeField] private string[] repeatDialogue;
@@ -28,6 +29,7 @@ public class NPC_Dia : Interaction
     private TextMeshProUGUI endText;
     private Image textBox;
     private RectTransform iconOriginPoint;
+    private AudioSource audioSource;
     private bool spoken;
 
     private void Awake()
@@ -39,6 +41,7 @@ public class NPC_Dia : Interaction
         textBox = customerList.textBox;
         iconOriginPoint = customerList.iconOriginPoint;
         endText = customerList.endTextPopup;
+        audioSource = GetComponent<AudioSource>();
 
         Instantiate(icon, iconOriginPoint);
         icon.SetActive(false);
@@ -107,6 +110,8 @@ public class NPC_Dia : Interaction
             for (int v = 0; v <= dialog.Length; v++)
             {
                 tmp.text = dialog[..v];
+                audioSource.PlayOneShot(speechSound);
+
                 yield return new WaitForSeconds(timePerLetter);
 
                 if (Input.GetKey(KeyCode.Space))

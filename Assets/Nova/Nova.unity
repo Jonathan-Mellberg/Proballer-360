@@ -794,6 +794,7 @@ GameObject:
   - component: {fileID: 702645285}
   - component: {fileID: 702645284}
   - component: {fileID: 702645292}
+  - component: {fileID: 702645293}
   m_Layer: 0
   m_Name: Playah
   m_TagString: Player
@@ -988,6 +989,14 @@ MonoBehaviour:
   jumpscareFace: {fileID: 439745890}
   background: {fileID: 1237083861}
   retrySkull: {fileID: 332005809}
+--- !u!81 &702645293
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702645283}
+  m_Enabled: 1
 --- !u!1001 &722105806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1121,6 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OrderReader
   platterHitbox: {fileID: 1337846953}
   customerList: {fileID: 1721186420}
+  bellSound: {fileID: 0}
 --- !u!135 &868602925
 SphereCollider:
   m_ObjectHideFlags: 0

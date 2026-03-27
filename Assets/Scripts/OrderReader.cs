@@ -5,10 +5,20 @@ public class OrderReader : Interaction
 {
     [SerializeField] private Transform platterHitbox;
     [SerializeField] private CustomerListV2 customerList;
+    [SerializeField] private AudioClip bellSound;
     private GameObject[] orders;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public override void Interact()
     {
+        if (audioSource != null)
+            audioSource.PlayOneShot(bellSound);
+
         if (orders == null)
             return;
 
@@ -31,7 +41,7 @@ public class OrderReader : Interaction
         // Convert collider list to gameObject list
         foreach (Collider collider in colliders) 
         {
-            if (collider.gameObject.CompareTag("PickUppable"))
+            if (collider.gameObject.CompareTag("PickUppable") && !collider.gameObject.name.StartsWith("Platter"))
                 items.Add(collider.gameObject);
         }
 
