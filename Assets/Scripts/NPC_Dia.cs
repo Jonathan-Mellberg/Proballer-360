@@ -18,7 +18,6 @@ public class NPC_Dia : Interaction
     [SerializeField] private string[] dissapointDialogue;
 
     [Header("Emotions")]
-    [SerializeField] private string proceedButton;
     [SerializeField] private GameObject happyParticles;
     [SerializeField] private GameObject angryParticles;
 

@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f5b9f99722d3946aad89d314ebdf01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cust_Timer
-  time: 20
+  time: 60
   angerFactor: 2
   calmColour: {r: 0.30625978, g: 0.76729554, b: 0.19544312, a: 1}
   angryColour: {r: 1, g: 0, b: 0, a: 1}
@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
   canSpeak: 0
+  complete: 0
   order: 
   icon: {fileID: 5876363198304140575, guid: 36e57f085b94f7f4ca6fea27cff9f1b3, type: 3}
   speechSound: {fileID: 0}
