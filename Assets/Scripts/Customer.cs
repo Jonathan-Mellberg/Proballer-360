@@ -54,8 +54,6 @@ public class Customer : MonoBehaviour
     {
         if (spriteRenderer != null) spriteRenderer.sprite = normalSprite;
         custTimer.StopTimer();
-        //Npc_Dia.CompletionSpeech();
-
         orderReader.UpdateOrder(null);
         Leave();
     }

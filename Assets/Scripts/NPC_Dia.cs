@@ -61,7 +61,6 @@ public class NPC_Dia : Interaction
 
     public void CompletionSpeech()
     {
-        if (winDialogue == null) Debug.Log("son im crine");
         StartCoroutine(Dialog(winDialogue));
     }
 

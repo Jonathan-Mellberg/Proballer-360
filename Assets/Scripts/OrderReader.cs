@@ -22,7 +22,7 @@ public class OrderReader : Interaction
         if (orders == null)
             return;
 
-        if (ReadPlatter() == true)
+        if (ReadPlatter())
             customerList.customerObj.GetComponent<Customer>().CompleteOrder();
     }
 
@@ -42,7 +42,9 @@ public class OrderReader : Interaction
         foreach (Collider collider in colliders) 
         {
             if (collider.gameObject.CompareTag("PickUppable") && !collider.gameObject.name.StartsWith("Platter"))
+            {
                 items.Add(collider.gameObject);
+            }
         }
 
         // Identify coffee object
@@ -52,15 +54,18 @@ public class OrderReader : Interaction
                 coffeeOrder = order.transform.Find("coffee").gameObject;
         }
 
-
         // Check for incorrect items
         bool incorrectItem = false;
         foreach (GameObject item in items)
         {
-            if (!orders.ToString().Contains(item.name))
+            for (int i = 0; i < orders.Length; i++)
             {
-                incorrectItem = true;
+                if (orders[i].name != item.name)
+                {
+                    incorrectItem = true;
+                }
             }
+            
 
             if (item == coffeeOrder)
             {
@@ -86,6 +91,6 @@ public class OrderReader : Interaction
                 Destroy(item);
         }
 
-        return incorrectItem;
+        return !incorrectItem;
     }
 }
