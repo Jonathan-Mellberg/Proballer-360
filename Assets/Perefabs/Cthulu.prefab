@@ -53,8 +53,8 @@ MonoBehaviour:
   orders:
   - {fileID: 5807247969971442802, guid: b95dd91fbfeb5e8409b63db920a951c7, type: 3}
   - {fileID: 5807247969971442802, guid: b95dd91fbfeb5e8409b63db920a951c7, type: 3}
-  normalSprite: {fileID: 0}
-  angrySprite: {fileID: 0}
+  normalSprite: {fileID: 21300000, guid: b23ecb17b81ef0b42b6d3f50917066d5, type: 3}
+  angrySprite: {fileID: 21300000, guid: 992c55f1727e63c4ca3c3cf5e92d4d74, type: 3}
   orderAmount: 1
   leaveParticles: {fileID: 0}
 --- !u!114 &-8700466904795946259

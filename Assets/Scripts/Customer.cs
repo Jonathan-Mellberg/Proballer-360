@@ -19,8 +19,10 @@ public class Customer : MonoBehaviour
     public void GetVariables()
     {
         customerList = CustomerListV2.instance;
-        Npc_Dia = transform.GetComponent<NPC_Dia>();
+        Npc_Dia = gameObject.GetComponent<NPC_Dia>();
         orderReader = customerList.orderReader;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        custTimer = gameObject.GetComponent<Cust_Timer>();
     }
 
     public void GenerateOrder()
@@ -52,7 +54,8 @@ public class Customer : MonoBehaviour
     {
         if (spriteRenderer != null) spriteRenderer.sprite = normalSprite;
         custTimer.StopTimer();
-        Npc_Dia.CompletionSpeech();
+        //Npc_Dia.CompletionSpeech();
+
         orderReader.UpdateOrder(null);
         Leave();
     }
@@ -66,7 +69,6 @@ public class Customer : MonoBehaviour
     {
         customerList.customerActive = false;
         if (leaveParticles != null) Instantiate(leaveParticles, transform);
-        Destroy(custTimer);
         Destroy(gameObject);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class NPC_Dia : Interaction
 {
     [HideInInspector] public bool canSpeak;
+    [HideInInspector] public bool complete;
     [HideInInspector] public string order;
 
     [Header("Dialogue")]
@@ -61,6 +62,7 @@ public class NPC_Dia : Interaction
 
     public void CompletionSpeech()
     {
+        if (winDialogue == null) Debug.Log("son im crine");
         StartCoroutine(Dialog(winDialogue));
     }
 
