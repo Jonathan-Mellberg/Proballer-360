@@ -57,6 +57,11 @@ public class Customer : MonoBehaviour
         Leave();
     }
 
+    public void BecomeAngry()
+    {
+        spriteRenderer.sprite = angrySprite;
+    }
+
     private void Leave()
     {
         customerList.customerActive = false;

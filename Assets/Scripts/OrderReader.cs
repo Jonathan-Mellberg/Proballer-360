@@ -66,8 +66,6 @@ public class OrderReader : Interaction
             {
                 GameObject coffee = item.transform.Find("coffee").gameObject;
 
-                Debug.Log(coffee.transform.localScale.y);
-
                 if (coffee.GetComponent<MeshRenderer>().material != coffeeOrder.GetComponent<MeshRenderer>().material
                     || coffee.transform.localScale.y < 0.75
                     || coffee.transform.GetChild(0).name == coffeeOrder.transform.GetChild(0).name)

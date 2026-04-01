@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7361851250867115186}
   - component: {fileID: 2287549874046660354}
   m_Layer: 0
-  m_Name: Joe Bat
+  m_Name: Reaper
   m_TagString: Interacteable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +74,8 @@ MonoBehaviour:
   orders:
   - {fileID: 5807247969971442802, guid: b95dd91fbfeb5e8409b63db920a951c7, type: 3}
   - {fileID: 5807247969971442802, guid: b95dd91fbfeb5e8409b63db920a951c7, type: 3}
-  normalSprite: {fileID: 21300000, guid: a945c823a0b9e0d43b1e5777ff467700, type: 3}
-  angrySprite: {fileID: 21300000, guid: 50dd1fcc689106f4293cb31b58e9c64d, type: 3}
+  normalSprite: {fileID: 21300000, guid: 5666cb81d471d5c45a90a73da654e51d, type: 3}
+  angrySprite: {fileID: 21300000, guid: 0b7f35d6105258542b3641581a7ca77a, type: 3}
   orderAmount: 2
   leaveParticles: {fileID: 0}
 --- !u!114 &4809656130864036542
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cust_Timer
   time: 120
   angerFactor: 2
-  calmColour: {r: 0.8050314, g: 0.25464296, b: 0.088603996, a: 1}
-  angryColour: {r: 1, g: 0, b: 0, a: 1}
+  calmColour: {r: 1, g: 0, b: 0.4899721, a: 1}
+  angryColour: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &-7434026810277558068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,22 +108,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
   canSpeak: 0
   order: 
-  icon: {fileID: 6334752203172532265, guid: fac57c2fe3b0b1140b1e6db3f90bd83a, type: 3}
+  icon: {fileID: 1237025881480937702, guid: 3c49cd0769e01f543bfdaff1812b8890, type: 3}
   speechSound: {fileID: 0}
   timePerLetter: 0.05
   startDialogue:
-  - "Go on, then. Prove to me that even peasants\u2019 * can be\u2026 adequate."
+  - "Let\u2019s see if a * will get me some ladies."
   repeatDialogue:
-  - What? My beauty got you speechless?
-  - "Hey, eyes off the dough. I ain\u2019t tipping."
-  - "What, I got red on me? That\u2019s just the dessert."
-  - "Sure glad I don\u2019t have to work in this dump."
+  - Does this robe make my forehead look big?
+  - "I\u2019m trying out a new style. What do ya think?"
+  - "My scythe isn\u2019t small! It\u2019s a grower, I promise!"
   winDialogue:
-  - "Hmm, not bad, kid. Still ain\u2019t tipping."
-  - Adequate.
+  - "Hm. Seems I won\u2019t have to take your life today."
+  - Humanity be damned, this person of indeterminate gender can brew!
   dissapointDialogue:
-  - "I\u2019ll just taste your blood instead!"
-  - You good for nothing human!
+  - Do you know who my dad is?!
+  - "I\u2019m the GRIM REAPER! You don\u2019t wanna mess with me!"
   proceedButton: 
   happyParticles: {fileID: 0}
   angryParticles: {fileID: 0}
@@ -174,12 +173,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a945c823a0b9e0d43b1e5777ff467700, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b7f35d6105258542b3641581a7ca77a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5120001, y: 2.016}
+  m_Size: {x: 21.960001, y: 37.10733}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
