@@ -52,6 +52,7 @@ public class Cust_Timer : MonoBehaviour
         angry = true;
         StopCoroutine(coroutine);
         StopCoroutine(barProgressCoroutine);
+        gameObject.GetComponent<Customer>().BecomeAngry();
         bar.color = angryColour;
         coroutine = StartCoroutine(TimeMeterDrain(bar.fillAmount * time / angerFactor));
     }

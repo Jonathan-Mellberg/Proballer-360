@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8911141754357760637}
   - component: {fileID: 8272155359611056526}
   - component: {fileID: 7327750317819405154}
+  - component: {fileID: -3853313212898165224}
   m_Layer: 0
   m_Name: Cthulu
   m_TagString: Interacteable
@@ -70,8 +71,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cust_Timer
   time: 20
   angerFactor: 2
-  calmColour: {r: 0.16407563, g: 0.4118609, b: 0.8553459, a: 1}
-  angryColour: {r: 0.64779866, g: 0.1813021, b: 0.1813021, a: 1}
+  calmColour: {r: 0.30625978, g: 0.76729554, b: 0.19544312, a: 1}
+  angryColour: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &-6526453141999655396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,14 +87,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Dia
   canSpeak: 0
   order: 
-  icon: {fileID: 737654993641311794, guid: 8166cf27ded86c14fbc541b1b63badb2, type: 3}
+  icon: {fileID: 5876363198304140575, guid: 36e57f085b94f7f4ca6fea27cff9f1b3, type: 3}
+  speechSound: {fileID: 0}
   timePerLetter: 0.05
   startDialogue:
-  - skibidi toilet
-  - I want *
-  repeatDialogue: []
-  winDialogue: []
-  dissapointDialogue: []
+  - Fine, gimme one of your *s, then. Give me a reason to not leave a bad review
+    of this dump.
+  repeatDialogue:
+  - "Don\u2019t talk to me, idiot. Hurry up with my order!"
+  - "My children haven\u2019t talked to me in a long time, but I know they\u2019re
+    secretly missing me."
+  - "Back in my day, this caf\xE9 didn\u2019t hire any filthy humans!"
+  - "I\u2019m not short! I\u2019m on a diet, I\u2019ll have you know!"
+  winDialogue:
+  - Whatever.
+  - You should have paid me for waiting this long.
+  dissapointDialogue:
+  - "Stupid diversity hires. Can\u2019t even make a coffee."
+  - Finally I get an excuse to kill you!
   proceedButton: B
   happyParticles: {fileID: 0}
   angryParticles: {fileID: 0}
@@ -188,3 +199,100 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &-3853313212898165224
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233365751748775433}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
